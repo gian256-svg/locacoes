@@ -61,7 +61,13 @@
     ],
     "incluirCapaNaGaleria": true,
     "quantidadeOutras": 3,
-    "animacoes": true
+    "animacoes": true,
+    "mostrarBairroNoCard": true,
+    "mostrarQuantidadePorCidade": true,
+    "mostrarCaixaContato": true,
+    "mostrarContatoNoTopo": true,
+    "mostrarRodape": true,
+    "mostrarOrnamentos": true
   },
   "contato": {
     "whatsapp": "5511999999999",

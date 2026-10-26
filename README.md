@@ -6,7 +6,7 @@ Site elegante (preto e dourado) para apresentar locações a clientes, com **pai
 
 | Peça | Serviço (grátis) | Função |
 |---|---|---|
-| Hospedagem | **Cloudflare Pages** | Site sempre no ar e sem limite de visitas. Endereço `locacoes.pages.dev` |
+| Hospedagem | **Cloudflare Pages** | Site sempre no ar e sem limite de visitas. Endereço `locacoes-1cq.pages.dev` |
 | Painel | **Sveltia CMS** (open source) | Editar tudo em `seusite/admin` |
 | Armazenamento | **GitHub** (repositório privado) | Guarda o projeto e o histórico de alterações |
 
@@ -20,7 +20,7 @@ O cliente só **visualiza**. Só quem tem a chave de acesso consegue editar.
 flowchart LR
   A["Você edita no painel /admin"] --> B["Painel salva no GitHub"]
   B --> C["Cloudflare atualiza o site sozinha (~1 min)"]
-  C --> D["Cliente acessa locacoes.pages.dev"]
+  C --> D["Cliente acessa locacoes-1cq.pages.dev"]
 ```
 
 ---
@@ -32,20 +32,20 @@ flowchart LR
 2. No menu, vá em **Workers e Pages** → **Criar** → aba **Pages** → **Conectar ao Git**.
 3. Autorize o GitHub e escolha o repositório **locacoes**.
 4. Preencha:
-   - **Nome do projeto:** `locacoes` (vira `locacoes.pages.dev`; se estiver ocupado, escolha outro)
+   - **Nome do projeto:** `locacoes` (vira `locacoes-1cq.pages.dev`; se estiver ocupado, escolha outro)
    - **Predefinição de framework:** `Nenhum`
    - **Comando de build:** `node scripts/build.mjs`
    - **Diretório de saída do build:** `dist`
 5. Clique em **Salvar e implantar**. Em 1–2 minutos o site está no ar.
 
-> Se o nome escolhido for diferente de `locacoes`, troque `locacoes.pages.dev` pelo seu endereço nas linhas `site_url` e `display_url` de [`admin/config.yml`](admin/config.yml).
+> Se o nome escolhido for diferente de `locacoes`, troque `locacoes-1cq.pages.dev` pelo seu endereço nas linhas `site_url` e `display_url` de [`admin/config.yml`](admin/config.yml).
 
 ### 2. Desligar o GitHub Pages e deixar o projeto privado
 - GitHub → repositório → **Settings → Pages** → em *Source* escolha **None** (ou "Unpublish").
 - **Settings → General → Danger Zone → Change visibility → Private**.
 
 ### 3. Primeiro acesso ao painel
-1. Abra `https://locacoes.pages.dev/admin`
+1. Abra `https://locacoes-1cq.pages.dev/admin`
 2. Clique em **Sign In with Token**.
 3. Clique no link que aparece: ele abre o GitHub com as permissões certas já marcadas. Clique em **Generate token** e copie o código.
 4. Cole o código no painel. Pronto: o navegador lembra o acesso.

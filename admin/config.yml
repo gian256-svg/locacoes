@@ -14,8 +14,8 @@ backend:
     uploadMedia: "Painel: envia {{path}}"
     deleteMedia: "Painel: remove {{path}}"
 
-site_url: https://locacoes.pages.dev
-display_url: https://locacoes.pages.dev
+site_url: https://locacoes-1cq.pages.dev
+display_url: https://locacoes-1cq.pages.dev
 
 media_folder: /assets/uploads
 public_folder: /assets/uploads
@@ -38,11 +38,13 @@ slug:
   sanitize_replacement: "-"
 
 collections:
-  # ------------------------------------------------------------------
+  # ==================================================================
+  # LOCAÇÕES
+  # ==================================================================
   - name: locacoes
     label: Locações
     label_singular: Locação
-    description: Cada item é uma locação exibida no site. Arraste fotos para enviar.
+    description: Cada item é uma locação exibida no site.
     folder: content/locacoes
     format: json
     extension: json
@@ -69,7 +71,15 @@ collections:
         value_type: int
         default: 100
         hint: "Números menores aparecem primeiro (10, 20, 30...)."
-      - { name: cidade, label: Cidade, widget: string, default: "São Paulo" }
+      - name: cidade
+        label: Cidade
+        widget: relation
+        collection: configuracoes
+        file: cidades
+        value_field: "cidades.*.nome"
+        display_fields: ["cidades.*.nome"]
+        search_fields: ["cidades.*.nome"]
+        hint: "Para criar uma cidade nova, vá em Configurações › Cidades."
       - { name: bairro, label: Bairro / região, widget: string, required: false }
       - { name: selo, label: Selo (opcional), widget: string, required: false, hint: "Etiqueta dourada sobre a foto, ex: Novo, Destaque." }
       - { name: capa, label: Foto principal (capa), widget: image, hint: "Foto exibida na página inicial. Prefira fotos em pé." }
@@ -126,12 +136,33 @@ collections:
           - { name: titulo, label: Título (opcional), widget: string, required: false }
           - { name: vertical, label: Vídeo em pé (gravado no celular), widget: boolean, default: false, required: false }
 
-  # ------------------------------------------------------------------
+  # ==================================================================
+  # CONFIGURAÇÕES
+  # ==================================================================
   - name: configuracoes
     label: Configurações
     editor:
       preview: false
     files:
+      # ---------------------------------------------------------------
+      - name: cidades
+        label: Cidades
+        description: Cidades exibidas no site. A ordem aqui é a ordem na página.
+        file: content/cidades.json
+        format: json
+        fields:
+          - name: cidades
+            label: Cidades
+            label_singular: cidade
+            widget: list
+            summary: "{{fields.nome}}"
+            hint: "Arraste para mudar a ordem. Desligue 'Visível' para esconder a cidade e todas as locações dela."
+            fields:
+              - { name: nome, label: Nome da cidade, widget: string }
+              - { name: subtitulo, label: Subtítulo (opcional), widget: string, required: false, hint: "Texto pequeno abaixo do nome da cidade." }
+              - { name: visivel, label: Visível, widget: boolean, default: true }
+
+      # ---------------------------------------------------------------
       - name: site
         label: Aparência, textos e contato
         file: content/site.json
@@ -142,8 +173,8 @@ collections:
             widget: object
             collapsed: true
             fields:
-              - { name: nome, label: Nome, widget: string }
-              - { name: slogan, label: Slogan, widget: string, required: false }
+              - { name: nome, label: Nome, widget: string, required: false, hint: "Deixe vazio para esconder." }
+              - { name: slogan, label: Slogan, widget: string, required: false, hint: "Deixe vazio para esconder." }
               - { name: logo, label: "Logo (opcional, substitui o nome)", widget: image, required: false }
 
           - name: cores
@@ -152,7 +183,7 @@ collections:
             collapsed: true
             fields:
               - { name: fundo, label: Fundo principal, widget: color, default: "#0b0b0b" }
-              - { name: fundoSecundario, label: Fundo das faixas, widget: color, default: "#121212" }
+              - { name: fundoSecundario, label: Fundo das faixas e rodapé, widget: color, default: "#121212" }
               - { name: superficie, label: Fundo das caixas, widget: color, default: "#181818" }
               - { name: destaque, label: Dourado principal, widget: color, default: "#c9a45c" }
               - { name: destaqueClaro, label: Dourado claro (brilho), widget: color, default: "#ead7a4" }
@@ -182,29 +213,30 @@ collections:
             label: Textos do site
             widget: object
             collapsed: true
+            hint: "Apague qualquer texto para escondê-lo do site."
             fields:
-              - { name: eyebrow, label: Linha acima do título, widget: string, required: false }
-              - { name: titulo, label: Título principal, widget: string }
-              - { name: subtitulo, label: Subtítulo, widget: string, required: false }
-              - { name: filtroTodas, label: Botão de filtro "Todas", widget: string }
-              - { name: botaoVerLocacao, label: Texto "Ver locação", widget: string }
-              - { name: maisInfos, label: Texto "+ informações", widget: string }
-              - { name: semLocacoes, label: Mensagem sem locações, widget: string }
-              - { name: voltar, label: Botão voltar, widget: string }
-              - { name: tituloSobre, label: Título "Sobre o espaço", widget: string }
-              - { name: tituloInfos, label: Título "Informações", widget: string }
-              - { name: tituloVideo, label: Título "Vídeo", widget: string }
-              - { name: tituloFotos, label: Título "Galeria", widget: string }
-              - { name: verTodasFotos, label: Botão "Ver todas as fotos", widget: string }
-              - { name: outrasLocacoes, label: Título "Outras locações", widget: string }
-              - { name: naoEncontrado, label: Mensagem "não encontrada", widget: string }
-              - { name: ctaTitulo, label: Caixa de contato — título, widget: string }
-              - { name: ctaTexto, label: Caixa de contato — texto, widget: text, required: false }
-              - { name: ctaBotao, label: Caixa de contato — botão, widget: string }
-              - { name: rodape, label: Texto do rodapé, widget: string, required: false }
+              - { name: eyebrow, label: "Início — linha pequena acima do título", widget: string, required: false }
+              - { name: titulo, label: "Início — título principal", widget: string, required: false }
+              - { name: subtitulo, label: "Início — subtítulo", widget: string, required: false }
+              - { name: filtroTodas, label: "Início — botão de filtro 'Todas'", widget: string, required: false, hint: "Vazio = sem o botão 'Todas' (começa na primeira cidade)." }
+              - { name: botaoVerLocacao, label: "Cartão — texto 'Ver locação' (ao passar o mouse)", widget: string, required: false }
+              - { name: maisInfos, label: "Cartão — texto '+ informações'", widget: string, required: false, hint: "Aparece quando as informações no cartão estão desligadas." }
+              - { name: semLocacoes, label: "Início — mensagem quando não há locações", widget: string, required: false }
+              - { name: voltar, label: "Locação — botão voltar", widget: string, required: false }
+              - { name: tituloSobre, label: "Locação — título 'Sobre o espaço'", widget: string, required: false }
+              - { name: tituloInfos, label: "Locação — título 'Informações'", widget: string, required: false }
+              - { name: tituloVideo, label: "Locação — título 'Vídeo'", widget: string, required: false }
+              - { name: tituloFotos, label: "Locação — título 'Galeria'", widget: string, required: false }
+              - { name: verTodasFotos, label: "Locação — botão 'Ver todas as fotos'", widget: string, required: false }
+              - { name: outrasLocacoes, label: "Locação — título 'Outras locações'", widget: string, required: false }
+              - { name: naoEncontrado, label: "Mensagem de locação não encontrada", widget: string, required: false }
+              - { name: ctaTitulo, label: "Caixa de contato — título", widget: string, required: false }
+              - { name: ctaTexto, label: "Caixa de contato — texto", widget: text, required: false }
+              - { name: ctaBotao, label: "Caixa de contato — botão", widget: string, required: false }
+              - { name: rodape, label: "Rodapé — texto", widget: string, required: false }
 
           - name: layout
-            label: Layout
+            label: Layout e exibição
             widget: object
             collapsed: true
             fields:
@@ -228,15 +260,18 @@ collections:
                   - { label: "Acima da foto", value: acima }
                   - { label: "Abaixo da foto", value: abaixo }
                   - { label: "Sobre a foto", value: sobre }
+              - { name: mostrarBairroNoCard, label: Mostrar bairro ao lado do nome, widget: boolean, default: true }
               - { name: mostrarInfosNoCard, label: Mostrar informações abaixo da foto (página inicial), widget: boolean, default: true }
               - { name: quantidadeInfosNoCard, label: Quantas informações mostrar no cartão, widget: number, value_type: int, min: 0, max: 6, default: 3 }
               - { name: mostrarResumoNoCard, label: Mostrar resumo no cartão, widget: boolean, default: false }
               - { name: agruparPorCidade, label: Separar por cidade, widget: boolean, default: true }
+              - { name: mostrarQuantidadePorCidade, label: "Mostrar quantidade ('4 locações') ao lado da cidade", widget: boolean, default: true }
               - { name: mostrarFiltroCidades, label: Botões de filtro por cidade, widget: boolean, default: true }
               - { name: carrosselNoCelular, label: Fotos deslizantes no celular, widget: boolean, default: true }
               - name: ordemPaginaLocal
                 label: Seções da página da locação (na ordem)
                 widget: list
+                hint: "Arraste para reordenar. Remova uma seção para escondê-la."
                 field:
                   name: secao
                   label: Seção
@@ -249,6 +284,10 @@ collections:
                     - { label: "Outras locações", value: outras }
               - { name: incluirCapaNaGaleria, label: Incluir a capa na galeria, widget: boolean, default: true }
               - { name: quantidadeOutras, label: Quantidade de "outras locações", widget: number, value_type: int, min: 0, max: 6, default: 3 }
+              - { name: mostrarCaixaContato, label: Mostrar caixa "Gostou deste local?", widget: boolean, default: true }
+              - { name: mostrarContatoNoTopo, label: Mostrar ícones de contato no topo, widget: boolean, default: true }
+              - { name: mostrarRodape, label: Mostrar rodapé, widget: boolean, default: true }
+              - { name: mostrarOrnamentos, label: Mostrar ornamentos dourados (linhas com losango), widget: boolean, default: true }
               - { name: animacoes, label: Animações suaves, widget: boolean, default: true }
 
           - name: contato
@@ -256,10 +295,10 @@ collections:
             widget: object
             collapsed: true
             fields:
-              - { name: whatsapp, label: "WhatsApp (só números, com 55 + DDD)", widget: string, required: false, hint: "Ex: 5511999999999" }
+              - { name: whatsapp, label: "WhatsApp (só números, com 55 + DDD)", widget: string, required: false, hint: "Ex: 5511999999999. Vazio = esconde." }
               - { name: mensagemWhatsapp, label: Mensagem automática do WhatsApp, widget: string, required: false, hint: "{local} é trocado pelo nome da locação." }
-              - { name: instagram, label: Instagram, widget: string, required: false, hint: "Ex: @seuperfil" }
-              - { name: email, label: E-mail, widget: string, required: false }
+              - { name: instagram, label: Instagram, widget: string, required: false, hint: "Ex: @seuperfil. Vazio = esconde." }
+              - { name: email, label: E-mail, widget: string, required: false, hint: "Vazio = esconde." }
 
           - name: protecao
             label: Proteção das fotos

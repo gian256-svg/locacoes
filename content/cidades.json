@@ -1,0 +1,6 @@
+{
+  "cidades": [
+    { "nome": "São Paulo", "subtitulo": "", "visivel": true },
+    { "nome": "Campinas", "subtitulo": "Interior de SP", "visivel": true }
+  ]
+}

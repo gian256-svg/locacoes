@@ -293,8 +293,8 @@ h1, h2, h3, .marca__nome, .rodape__marca, .info__valor {
 .bloco + .bloco { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .texto-corrido p { margin: 0 0 1.1rem; color: color-mix(in srgb, var(--cor-texto) 82%, var(--cor-fundo)); font-size: 1rem; }
 
-.infos-grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px; background: var(--cor-borda); border: 1px solid var(--cor-borda); border-radius: var(--raio); overflow: hidden; }
-.info { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.3rem; background: var(--cor-fundo); transition: background-color .3s; }
+.infos-grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); border-top: 1px solid var(--cor-borda); border-left: 1px solid var(--cor-borda); border-radius: var(--raio); overflow: hidden; }
+.info { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.3rem; background: var(--cor-fundo); border-right: 1px solid var(--cor-borda); border-bottom: 1px solid var(--cor-borda); transition: background-color .3s; }
 .info:hover { background: var(--cor-superficie); }
 .info__icone { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--cor-borda-forte); border-radius: 50%; color: var(--cor-dourado); }
 .info__icone svg { width: 20px; height: 20px; }
@@ -315,6 +315,12 @@ h1, h2, h3, .marca__nome, .rodape__marca, .info__valor {
 .cta__texto { margin: 0 0 1.6rem; font-size: .9rem; color: var(--cor-texto-suave); }
 .cta__links { justify-content: center; margin-top: 1.4rem; }
 .cta .botao { letter-spacing: .12em; padding-inline: 1.1rem; white-space: nowrap; }
+
+/* Opções do painel */
+.sem-ornamentos .ornamento { display: none; }
+.local-corpo--sem-cta { grid-template-columns: minmax(0, 860px); justify-content: center; }
+.secao-cidade__textos { display: flex; flex-direction: column; gap: .3rem; }
+.secao-cidade__sub { margin: 0; font-size: .8rem; color: var(--cor-texto-suave); }
 
 .botao {
   display: inline-flex; align-items: center; justify-content: center; gap: .6rem;

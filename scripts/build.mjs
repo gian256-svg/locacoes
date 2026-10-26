@@ -60,6 +60,15 @@ site.fontes.texto = fonte(site.fontes.texto, "Montserrat");
 if (site.marca) site.marca.logo = caminho(site.marca.logo);
 const ocultarDoGoogle = !site.seo || site.seo.ocultarDoGoogle !== false;
 
+/* ---------------- Cidades ---------------- */
+const arqCidades = r("content/cidades.json");
+site.cidades = fs.existsSync(arqCidades)
+  ? (lerJSON(arqCidades).cidades || [])
+      .filter((c) => c && typeof c.nome === "string" && c.nome.trim())
+      .map((c) => ({ nome: c.nome.trim(), subtitulo: c.subtitulo || "", visivel: c.visivel !== false }))
+  : [];
+const cidadesOcultas = new Set(site.cidades.filter((c) => !c.visivel).map((c) => c.nome.toLowerCase()));
+
 /* ---------------- Locações ---------------- */
 const pasta = r("content/locacoes");
 const locacoes = fs.readdirSync(pasta)
@@ -89,7 +98,7 @@ const locacoes = fs.readdirSync(pasta)
       video: videos
     };
   })
-  .filter((l) => l.visivel && l.nome)
+  .filter((l) => l.visivel && l.nome && !cidadesOcultas.has(l.cidade.trim().toLowerCase()))
   .sort((a, b) => a.ordem - b.ordem || a.nome.localeCompare(b.nome, "pt-BR"));
 
 /* ---------------- Gera arquivos ---------------- */

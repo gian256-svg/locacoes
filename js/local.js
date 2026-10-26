@@ -1,18 +1,20 @@
 /* Página de detalhes da locação */
 (function () {
   "use strict";
-  var el = App.el, CFG = App.config, T = CFG.textos || {}, L = CFG.layout || {};
+  var el = App.el, CFG = App.config, texto = App.texto, L = CFG.layout || {};
   var main = document.getElementById("conteudo");
+  /* Título só aparece se o texto não estiver vazio no painel */
+  function cab(tag, cls, txt) { return txt ? el(tag, { class: cls, text: txt }) : null; }
   var id = new URLSearchParams(window.location.search).get("id");
   var loc = App.locacoes.filter(function (l) { return String(l.id) === id; })[0];
 
   if (!loc) {
-    document.title = (T.naoEncontrado || "Locação não encontrada") + " · " + ((CFG.marca || {}).nome || "");
+    document.title = (texto("naoEncontrado", "Locação não encontrada")) + " · " + ((CFG.marca || {}).nome || "");
     main.append(el("section", { class: "nao-encontrado container" }, [
       el("p", { class: "eyebrow", text: "404" }),
-      el("h1", { class: "titulo-ouro", text: T.naoEncontrado || "Locação não encontrada" }),
+      cab("h1", "titulo-ouro", texto("naoEncontrado", "Locação não encontrada")),
       el("div", { class: "ornamento", "aria-hidden": "true" }, el("span")),
-      el("a", { class: "botao botao--contorno", href: "index.html", text: T.voltar || "Todas as locações" })
+      el("a", { class: "botao botao--contorno", href: "index.html", text: texto("voltar", "Todas as locações") || "Voltar" })
     ]));
     return;
   }
@@ -24,7 +26,7 @@
   /* ---------- Cabeçalho ---------- */
   function hero() {
     return el("section", { class: "local-hero container" }, [
-      el("a", { class: "voltar", href: "index.html" }, [el("span", { html: App.icone("voltar") }), T.voltar || "Todas as locações"]),
+      texto("voltar", "Todas as locações") ? el("a", { class: "voltar", href: "index.html" }, [el("span", { html: App.icone("voltar") }), texto("voltar", "Todas as locações")]) : null,
       el("p", { class: "eyebrow", text: [loc.cidade, loc.bairro].filter(Boolean).join(" · ") }),
       el("h1", { class: "titulo-ouro", text: loc.nome }),
       el("div", { class: "ornamento", "aria-hidden": "true" }, el("span")),
@@ -46,7 +48,7 @@
         var g = document.getElementById("galeria-completa");
         if (g) g.scrollIntoView({ behavior: "smooth", block: "start" }); else lightbox.abrir(0);
       }
-    }, [el("span", { html: App.icone("grade") }), (T.verTodasFotos || "Ver todas as fotos") + " (" + fotos.length + ")"]) : null;
+    }, [el("span", { html: App.icone("grade") }), [texto("verTodasFotos", "Ver todas as fotos"), "(" + fotos.length + ")"].filter(Boolean).join(" ")]) : null;
     return el("section", { class: "container revelar" }, el("div", { class: "mosaico mosaico--" + n }, itens.concat(botao || [])));
   }
 
@@ -58,11 +60,11 @@
 
     var esquerda = el("div", { class: "local-corpo__principal" }, [
       desc.length ? el("div", { class: "bloco revelar" }, [
-        el("h2", { class: "titulo-secao", text: T.tituloSobre || "Sobre o espaço" }),
+        cab("h2", "titulo-secao", texto("tituloSobre", "Sobre o espaço")),
         el("div", { class: "texto-corrido" }, desc.map(function (p) { return el("p", { text: p }); }))
       ]) : null,
       infos.length ? el("div", { class: "bloco revelar" }, [
-        el("h2", { class: "titulo-secao", text: T.tituloInfos || "Informações" }),
+        cab("h2", "titulo-secao", texto("tituloInfos", "Informações")),
         el("ul", { class: "infos-grade" }, infos.map(function (i) {
           return el("li", { class: "info" }, [
             el("span", { class: "info__icone", html: App.icone(i.icone) }),
@@ -76,15 +78,15 @@
     ]);
 
     var wa = App.linkWhatsApp(loc.nome);
-    var lateral = el("aside", { class: "cta revelar" }, [
+    var lateral = L.mostrarCaixaContato === false ? null : el("aside", { class: "cta revelar" }, [
       el("p", { class: "eyebrow", text: loc.nome }),
-      el("h3", { class: "cta__titulo", text: T.ctaTitulo || "Gostou deste local?" }),
-      T.ctaTexto ? el("p", { class: "cta__texto", text: T.ctaTexto }) : null,
-      wa ? el("a", { class: "botao botao--ouro", href: wa, target: "_blank", rel: "noopener noreferrer" }, [el("span", { html: App.icone("whatsapp") }), T.ctaBotao || "Consultar disponibilidade"]) : null,
+      cab("h3", "cta__titulo", texto("ctaTitulo", "Gostou deste local?")),
+      texto("ctaTexto", "") ? el("p", { class: "cta__texto", text: texto("ctaTexto", "") }) : null,
+      wa ? el("a", { class: "botao botao--ouro", href: wa, target: "_blank", rel: "noopener noreferrer" }, [el("span", { html: App.icone("whatsapp") }), texto("ctaBotao", "Consultar disponibilidade") || "WhatsApp"]) : null,
       el("div", { class: "cta__links" }, App.linksContato(loc.nome))
     ]);
 
-    return el("section", { class: "local-corpo container" }, [esquerda, lateral]);
+    return el("section", { class: "local-corpo container" + (lateral ? "" : " local-corpo--sem-cta") }, [esquerda, lateral]);
   }
 
   /* ---------- Vídeo ---------- */
@@ -123,7 +125,7 @@
     var vids = normalizarVideos();
     if (!vids.length) return null;
     return el("section", { class: "faixa" }, el("div", { class: "container" }, [
-      el("h2", { class: "titulo-secao titulo-secao--centro revelar", text: T.tituloVideo || "Vídeo do local" }),
+      cab("h2", "titulo-secao titulo-secao--centro revelar", texto("tituloVideo", "Vídeo do local")),
       el("div", { class: "videos" + (vids.length > 1 ? " videos--varios" : "") }, vids.map(player))
     ]));
   }
@@ -132,7 +134,7 @@
   function galeria() {
     if (fotos.length < 2) return null;
     return el("section", { class: "container galeria-completa", id: "galeria-completa" }, [
-      el("h2", { class: "titulo-secao titulo-secao--centro revelar", text: T.tituloFotos || "Galeria de fotos" }),
+      cab("h2", "titulo-secao titulo-secao--centro revelar", texto("tituloFotos", "Galeria de fotos")),
       el("div", { class: "masonry" }, fotos.map(function (f, i) {
         return el("button", { type: "button", class: "masonry__item revelar", "aria-label": "Abrir foto " + (i + 1), onclick: function () { lightbox.abrir(i); } }, [
           el("img", { src: f.src, alt: f.legenda || loc.nome, loading: "lazy", decoding: "async" }),
@@ -152,7 +154,7 @@
     if (!lista.length) return null;
     return el("section", { class: "container outras" }, [
       el("div", { class: "secao-cidade__cab revelar" }, [
-        el("h2", { class: "secao-cidade__titulo", text: T.outrasLocacoes || "Outras locações" }),
+        cab("h2", "secao-cidade__titulo", texto("outrasLocacoes", "Outras locações")),
         el("span", { class: "secao-cidade__linha", "aria-hidden": "true" })
       ]),
       el("div", { class: "grade" }, lista.map(App.criarCard))

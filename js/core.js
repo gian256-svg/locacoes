@@ -164,21 +164,31 @@
     return lista;
   };
 
+  /* ---------- Textos ----------
+     Texto apagado no painel ("") = elemento escondido.
+     O padrão só é usado se o campo nem existir. */
+  App.texto = function (chave, padrao) {
+    var T = CFG.textos || {};
+    if (typeof T[chave] === "string") return T[chave].trim();
+    return padrao || "";
+  };
+  var texto = App.texto;
+
   /* ---------- Cartão de locação ---------- */
   App.criarCard = function (loc) {
-    var T = CFG.textos || {};
     var pos = L.posicaoNome || "acima";
     var capa = App.safeUrl(loc.capa) || (App.normalizarFotos(loc)[0] || {}).src;
+    var verTxt = texto("botaoVerLocacao", "Ver locação");
 
     var cab = el("div", { class: "card__cabecalho" }, [
       el("h3", { class: "card__nome", text: loc.nome || "" }),
-      loc.bairro ? el("span", { class: "card__local", text: loc.bairro }) : null
+      loc.bairro && L.mostrarBairroNoCard !== false ? el("span", { class: "card__local", text: loc.bairro }) : null
     ]);
 
     var foto = el("div", { class: "card__foto" }, [
       capa ? el("img", { src: capa, alt: loc.nome || "", loading: "lazy", decoding: "async" }) : null,
       loc.selo ? el("span", { class: "card__selo", text: loc.selo }) : null,
-      el("span", { class: "card__ver" }, [T.botaoVerLocacao || "Ver locação", el("span", { class: "card__seta", html: App.icone("seta") })])
+      verTxt ? el("span", { class: "card__ver" }, [verTxt, el("span", { class: "card__seta", html: App.icone("seta") })]) : null
     ]);
 
     var partes = [];
@@ -189,13 +199,13 @@
     if (L.mostrarResumoNoCard && loc.resumo) partes.push(el("p", { class: "card__resumo", text: loc.resumo }));
 
     var infos = Array.isArray(loc.infos) ? loc.infos : [];
-    if (L.mostrarInfosNoCard !== false && infos.length) {
-      var qtd = Number(L.quantidadeInfosNoCard) >= 0 ? Number(L.quantidadeInfosNoCard) : 3;
+    var qtd = Number(L.quantidadeInfosNoCard) >= 0 ? Number(L.quantidadeInfosNoCard) : 3;
+    if (L.mostrarInfosNoCard !== false && infos.length && qtd > 0) {
       partes.push(el("ul", { class: "card__infos" }, infos.slice(0, qtd).map(function (i) {
         return el("li", { title: i.rotulo || "" }, [el("span", { class: "icone", html: App.icone(i.icone) }), String(i.valor || "")]);
       })));
-    } else if (L.mostrarInfosNoCard === false) {
-      partes.push(el("span", { class: "card__mais", text: T.maisInfos || "+ informações" }));
+    } else if (L.mostrarInfosNoCard === false && texto("maisInfos", "+ informações")) {
+      partes.push(el("span", { class: "card__mais", text: texto("maisInfos", "+ informações") }));
     }
 
     return el("a", { class: "card revelar", href: "local.html?id=" + encodeURIComponent(loc.id), "aria-label": loc.nome }, partes);
@@ -220,6 +230,8 @@
   };
 
   /* ---------- Topo e rodapé ---------- */
+  if (L.mostrarOrnamentos === false) document.body.classList.add("sem-ornamentos");
+
   function renderTopo() {
     var topo = document.getElementById("topo");
     if (!topo) return;
@@ -227,8 +239,9 @@
     var logo = App.safeUrl(m.logo);
     var marca = el("a", { class: "marca", href: "index.html", "aria-label": m.nome || "Início" },
       logo ? el("img", { class: "marca__logo", src: logo, alt: m.nome || "" })
-        : [el("span", { class: "marca__nome", text: m.nome || "" }), m.slogan ? el("span", { class: "marca__slogan", text: m.slogan }) : null]);
-    topo.append(el("div", { class: "topo__inner container" }, [marca, el("nav", { class: "topo__acoes", "aria-label": "Contato" }, App.linksContato())]));
+        : [m.nome ? el("span", { class: "marca__nome", text: m.nome }) : null, m.slogan ? el("span", { class: "marca__slogan", text: m.slogan }) : null]);
+    var acoes = L.mostrarContatoNoTopo === false ? null : el("nav", { class: "topo__acoes", "aria-label": "Contato" }, App.linksContato());
+    topo.append(el("div", { class: "topo__inner container" }, [marca, acoes]));
     window.addEventListener("scroll", function () {
       topo.classList.toggle("rolado", window.scrollY > 10);
     }, { passive: true });
@@ -237,12 +250,13 @@
   function renderRodape() {
     var r = document.getElementById("rodape");
     if (!r) return;
-    var T = CFG.textos || {};
+    if (L.mostrarRodape === false) { r.remove(); return; }
     var m = CFG.marca || {};
+    var rod = texto("rodape", "");
     r.append(el("div", { class: "container rodape__inner" }, [
       el("div", { class: "ornamento", "aria-hidden": "true" }, el("span")),
-      el("p", { class: "rodape__marca", text: m.nome || "" }),
-      T.rodape ? el("p", { class: "rodape__texto", text: T.rodape }) : null,
+      m.nome ? el("p", { class: "rodape__marca", text: m.nome }) : null,
+      rod ? el("p", { class: "rodape__texto", text: rod }) : null,
       el("div", { class: "rodape__contato" }, App.linksContato()),
       el("p", { class: "rodape__copy", text: "© " + new Date().getFullYear() + " " + (m.nome || "") })
     ]));

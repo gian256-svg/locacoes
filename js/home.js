@@ -1,24 +1,41 @@
 /* Página inicial — lista de locações */
 (function () {
   "use strict";
-  var el = App.el, CFG = App.config, locacoes = App.locacoes;
-  var T = CFG.textos || {}, L = CFG.layout || {};
+  var el = App.el, CFG = App.config, texto = App.texto;
+  var L = CFG.layout || {};
 
-  function texto(id, valor) {
+  /* ---------- Cabeçalho (textos vazios são removidos) ---------- */
+  function preencher(id, valor) {
     var n = document.getElementById(id);
     if (!n) return;
     if (valor) n.textContent = valor; else n.remove();
   }
-  texto("hero-eyebrow", T.eyebrow);
-  texto("hero-titulo", T.titulo);
-  texto("hero-subtitulo", T.subtitulo);
-  document.title = [T.titulo, (CFG.marca || {}).nome].filter(Boolean).join(" · ");
+  var titulo = texto("titulo", "Locações Disponíveis");
+  preencher("hero-eyebrow", texto("eyebrow", ""));
+  preencher("hero-titulo", titulo);
+  preencher("hero-subtitulo", texto("subtitulo", ""));
+  var hero = document.querySelector(".hero");
+  if (hero && !hero.querySelector("p, h1")) hero.remove();
+  document.title = [titulo, (CFG.marca || {}).nome].filter(Boolean).join(" · ") || "Locações";
 
+  /* ---------- Cidades ----------
+     Ordem e visibilidade vêm do painel (Configurações › Cidades).
+     Cidades não cadastradas lá aparecem no fim. */
   var SEM_CIDADE = "Outras";
+  var cadastro = (Array.isArray(CFG.cidades) ? CFG.cidades : []).filter(function (c) { return c && c.nome; });
+  var info = {};
+  cadastro.forEach(function (c) { info[c.nome.trim().toLowerCase()] = c; });
+  var chave = function (nome) { return String(nome || SEM_CIDADE).trim().toLowerCase(); };
+  var visivel = function (nome) { var c = info[chave(nome)]; return !c || c.visivel !== false; };
+
+  var locacoes = App.locacoes.filter(function (l) { return visivel(l.cidade); });
   var cidades = [];
+  cadastro.forEach(function (c) {
+    if (c.visivel !== false && locacoes.some(function (l) { return chave(l.cidade) === chave(c.nome); })) cidades.push(c.nome.trim());
+  });
   locacoes.forEach(function (l) {
-    var c = l.cidade || SEM_CIDADE;
-    if (cidades.indexOf(c) === -1) cidades.push(c);
+    var n = (l.cidade || SEM_CIDADE).trim();
+    if (!cidades.some(function (c) { return chave(c) === chave(n); })) cidades.push(n);
   });
 
   var filtro = "__todas";
@@ -28,7 +45,11 @@
   function renderFiltros() {
     if (!nav) return;
     if (L.mostrarFiltroCidades === false || cidades.length < 2) { nav.remove(); nav = null; return; }
-    [["__todas", T.filtroTodas || "Todas"]].concat(cidades.map(function (c) { return [c, c]; })).forEach(function (o) {
+    var opcoes = cidades.map(function (c) { return [c, c]; });
+    var todas = texto("filtroTodas", "Todas");
+    if (todas) opcoes.unshift(["__todas", todas]);
+    else filtro = cidades[0];
+    opcoes.forEach(function (o) {
       nav.append(el("button", {
         type: "button", class: "filtro" + (o[0] === filtro ? " ativo" : ""), "data-valor": o[0], "aria-pressed": String(o[0] === filtro),
         onclick: function () {
@@ -50,20 +71,25 @@
 
   function renderGaleria() {
     galeria.textContent = "";
-    var lista = filtro === "__todas" ? locacoes : locacoes.filter(function (l) { return (l.cidade || SEM_CIDADE) === filtro; });
+    var lista = filtro === "__todas" ? locacoes : locacoes.filter(function (l) { return chave(l.cidade) === chave(filtro); });
     if (!lista.length) {
-      galeria.append(el("p", { class: "vazio", text: T.semLocacoes || "Nenhuma locação disponível no momento." }));
+      galeria.append(el("p", { class: "vazio", text: texto("semLocacoes", "Nenhuma locação disponível no momento.") }));
       return;
     }
     if (L.agruparPorCidade !== false) {
       cidades.forEach(function (c) {
-        var itens = lista.filter(function (l) { return (l.cidade || SEM_CIDADE) === c; });
+        var itens = lista.filter(function (l) { return chave(l.cidade) === chave(c); });
         if (!itens.length) return;
+        var dados = info[chave(c)] || {};
         galeria.append(el("section", { class: "secao-cidade container" }, [
           el("header", { class: "secao-cidade__cab revelar" }, [
-            el("h2", { class: "secao-cidade__titulo", text: c }),
+            el("div", { class: "secao-cidade__textos" }, [
+              el("h2", { class: "secao-cidade__titulo", text: c }),
+              dados.subtitulo ? el("p", { class: "secao-cidade__sub", text: dados.subtitulo }) : null
+            ]),
             el("span", { class: "secao-cidade__linha", "aria-hidden": "true" }),
-            el("span", { class: "secao-cidade__qtd", text: itens.length + (itens.length === 1 ? " locação" : " locações") })
+            L.mostrarQuantidadePorCidade === false ? null :
+              el("span", { class: "secao-cidade__qtd", text: itens.length + (itens.length === 1 ? " locação" : " locações") })
           ]),
           grade(itens)
         ]));
