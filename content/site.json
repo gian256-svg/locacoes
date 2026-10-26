@@ -1,0 +1,79 @@
+{
+  "marca": {
+    "nome": "Locações",
+    "slogan": "Espaços para fotografar",
+    "logo": ""
+  },
+  "cores": {
+    "fundo": "#0b0b0b",
+    "fundoSecundario": "#121212",
+    "superficie": "#181818",
+    "destaque": "#c9a45c",
+    "destaqueClaro": "#ead7a4",
+    "destaqueEscuro": "#8c6a2f",
+    "texto": "#f2ede3",
+    "textoSuave": "#9d978b"
+  },
+  "fontes": {
+    "titulos": "Cormorant Garamond",
+    "texto": "Montserrat",
+    "tamanhoBase": 16,
+    "titulosEmMaiusculas": false
+  },
+  "textos": {
+    "eyebrow": "Portfólio de espaços",
+    "titulo": "Locações Disponíveis",
+    "subtitulo": "São Paulo",
+    "filtroTodas": "Todas",
+    "botaoVerLocacao": "Ver locação",
+    "maisInfos": "+ informações",
+    "semLocacoes": "Nenhuma locação disponível no momento.",
+    "voltar": "Todas as locações",
+    "tituloSobre": "Sobre o espaço",
+    "tituloInfos": "Informações",
+    "tituloVideo": "Vídeo do local",
+    "tituloFotos": "Galeria de fotos",
+    "verTodasFotos": "Ver todas as fotos",
+    "outrasLocacoes": "Outras locações",
+    "naoEncontrado": "Locação não encontrada",
+    "ctaTitulo": "Gostou deste local?",
+    "ctaTexto": "Fale com a gente para consultar datas, valores e condições.",
+    "ctaBotao": "Consultar disponibilidade",
+    "rodape": "Locações para ensaios, produções e eventos."
+  },
+  "layout": {
+    "colunasDesktop": 3,
+    "formatoCapa": "4/5",
+    "cantosArredondados": 6,
+    "posicaoNome": "acima",
+    "mostrarInfosNoCard": true,
+    "quantidadeInfosNoCard": 3,
+    "mostrarResumoNoCard": false,
+    "agruparPorCidade": true,
+    "mostrarFiltroCidades": true,
+    "carrosselNoCelular": true,
+    "ordemPaginaLocal": [
+      "mosaico",
+      "informacoes",
+      "video",
+      "galeria",
+      "outras"
+    ],
+    "incluirCapaNaGaleria": true,
+    "quantidadeOutras": 3,
+    "animacoes": true
+  },
+  "contato": {
+    "whatsapp": "5511999999999",
+    "mensagemWhatsapp": "Olá! Vi a locação {local} e gostaria de mais informações.",
+    "instagram": "@seuperfil",
+    "email": ""
+  },
+  "protecao": {
+    "bloquearCliqueDireito": true,
+    "bloquearArrastarImagens": true
+  },
+  "seo": {
+    "ocultarDoGoogle": true
+  }
+}

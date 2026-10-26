@@ -1,0 +1,8 @@
+{
+  "name": "locacoes",
+  "private": true,
+  "description": "Galeria de locações para fotografia — preto e dourado",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}

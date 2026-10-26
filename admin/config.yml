@@ -1,0 +1,277 @@
+# =====================================================================
+# PAINEL (Sveltia CMS) — define o que pode ser editado em /admin
+# =====================================================================
+
+backend:
+  name: github
+  repo: gian256-svg/locacoes
+  branch: main
+  auth_methods: [token]
+  commit_messages:
+    create: "Painel: nova locação {{slug}}"
+    update: "Painel: atualiza {{slug}}"
+    delete: "Painel: remove {{slug}}"
+    uploadMedia: "Painel: envia {{path}}"
+    deleteMedia: "Painel: remove {{path}}"
+
+site_url: https://locacoes.pages.dev
+display_url: https://locacoes.pages.dev
+
+media_folder: /assets/uploads
+public_folder: /assets/uploads
+
+media_libraries:
+  default:
+    config:
+      max_file_size: 20971520 # 20 MB (limite da hospedagem gratuita é 25 MB por arquivo)
+      slugify_filename: true
+      transformations:
+        raster_image: # fotos são convertidas para WebP e reduzidas automaticamente
+          format: webp
+          quality: 85
+          width: 2400
+          height: 2400
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  # ------------------------------------------------------------------
+  - name: locacoes
+    label: Locações
+    label_singular: Locação
+    description: Cada item é uma locação exibida no site. Arraste fotos para enviar.
+    folder: content/locacoes
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: nome
+    slug: "{{nome}}"
+    summary: "{{nome}} · {{cidade}}"
+    sortable_fields: [ordem, nome, cidade]
+    view_groups:
+      - { label: Cidade, field: cidade }
+    editor:
+      preview: false
+    fields:
+      - { name: nome, label: Nome da locação, widget: string, hint: "Aparece em cima da foto principal." }
+      - name: visivel
+        label: Visível no site
+        widget: boolean
+        default: true
+        hint: "Desligue para esconder sem apagar."
+      - name: ordem
+        label: Ordem
+        widget: number
+        value_type: int
+        default: 100
+        hint: "Números menores aparecem primeiro (10, 20, 30...)."
+      - { name: cidade, label: Cidade, widget: string, default: "São Paulo" }
+      - { name: bairro, label: Bairro / região, widget: string, required: false }
+      - { name: selo, label: Selo (opcional), widget: string, required: false, hint: "Etiqueta dourada sobre a foto, ex: Novo, Destaque." }
+      - { name: capa, label: Foto principal (capa), widget: image, hint: "Foto exibida na página inicial. Prefira fotos em pé." }
+      - { name: resumo, label: Resumo, widget: text, required: false, hint: "Uma frase curta." }
+      - { name: descricao, label: Descrição completa, widget: text, required: false, hint: "Deixe uma linha em branco para separar parágrafos." }
+      - name: infos
+        label: Informações importantes
+        label_singular: informação
+        widget: list
+        required: false
+        summary: "{{fields.rotulo}}: {{fields.valor}}"
+        fields:
+          - name: icone
+            label: Ícone
+            widget: select
+            default: check
+            options:
+              - { label: "Área (m²)", value: area }
+              - { label: "Pessoas / capacidade", value: pessoas }
+              - { label: "Preço", value: preco }
+              - { label: "Horário", value: relogio }
+              - { label: "Luz natural", value: luz }
+              - { label: "Localização", value: local }
+              - { label: "Estacionamento", value: carro }
+              - { label: "Câmera / ideal para", value: camera }
+              - { label: "Energia", value: energia }
+              - { label: "Check (genérico)", value: check }
+          - { name: rotulo, label: "Título (ex: Área)", widget: string }
+          - { name: valor, label: "Valor (ex: 300 m²)", widget: string }
+      - name: fotos
+        label: Fotos da galeria
+        widget: image
+        multiple: true
+        required: false
+        hint: "Selecione várias fotos de uma vez. Arraste para mudar a ordem."
+      - name: videos
+        label: Vídeos
+        label_singular: vídeo
+        widget: list
+        required: false
+        summary: "{{fields.titulo}} {{fields.link}}"
+        fields:
+          - name: link
+            label: Link do vídeo
+            widget: string
+            required: false
+            hint: "YouTube (pode ser 'Não listado'), Vimeo ou Google Drive. Preencha este OU envie um arquivo abaixo."
+          - name: arquivo
+            label: OU envie um arquivo de vídeo
+            widget: file
+            required: false
+            accept: "video/*"
+            hint: "MP4 de até 20 MB. Para vídeos maiores, use o YouTube."
+          - { name: titulo, label: Título (opcional), widget: string, required: false }
+          - { name: vertical, label: Vídeo em pé (gravado no celular), widget: boolean, default: false, required: false }
+
+  # ------------------------------------------------------------------
+  - name: configuracoes
+    label: Configurações
+    editor:
+      preview: false
+    files:
+      - name: site
+        label: Aparência, textos e contato
+        file: content/site.json
+        format: json
+        fields:
+          - name: marca
+            label: Marca
+            widget: object
+            collapsed: true
+            fields:
+              - { name: nome, label: Nome, widget: string }
+              - { name: slogan, label: Slogan, widget: string, required: false }
+              - { name: logo, label: "Logo (opcional, substitui o nome)", widget: image, required: false }
+
+          - name: cores
+            label: Cores
+            widget: object
+            collapsed: true
+            fields:
+              - { name: fundo, label: Fundo principal, widget: color, default: "#0b0b0b" }
+              - { name: fundoSecundario, label: Fundo das faixas, widget: color, default: "#121212" }
+              - { name: superficie, label: Fundo das caixas, widget: color, default: "#181818" }
+              - { name: destaque, label: Dourado principal, widget: color, default: "#c9a45c" }
+              - { name: destaqueClaro, label: Dourado claro (brilho), widget: color, default: "#ead7a4" }
+              - { name: destaqueEscuro, label: Dourado escuro (sombra), widget: color, default: "#8c6a2f" }
+              - { name: texto, label: Texto principal, widget: color, default: "#f2ede3" }
+              - { name: textoSuave, label: Texto secundário, widget: color, default: "#9d978b" }
+
+          - name: fontes
+            label: Fontes
+            widget: object
+            collapsed: true
+            fields:
+              - name: titulos
+                label: Fonte dos títulos
+                widget: select
+                default: Cormorant Garamond
+                options: [Cormorant Garamond, Playfair Display, Cinzel, Bodoni Moda, Marcellus, Italiana, Libre Baskerville, DM Serif Display]
+              - name: texto
+                label: Fonte do texto
+                widget: select
+                default: Montserrat
+                options: [Montserrat, Jost, Raleway, Lato, Poppins, Inter, Nunito Sans, Josefin Sans]
+              - { name: tamanhoBase, label: Tamanho do texto (px), widget: number, value_type: int, min: 13, max: 20, default: 16 }
+              - { name: titulosEmMaiusculas, label: Títulos em CAIXA ALTA, widget: boolean, default: false }
+
+          - name: textos
+            label: Textos do site
+            widget: object
+            collapsed: true
+            fields:
+              - { name: eyebrow, label: Linha acima do título, widget: string, required: false }
+              - { name: titulo, label: Título principal, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: string, required: false }
+              - { name: filtroTodas, label: Botão de filtro "Todas", widget: string }
+              - { name: botaoVerLocacao, label: Texto "Ver locação", widget: string }
+              - { name: maisInfos, label: Texto "+ informações", widget: string }
+              - { name: semLocacoes, label: Mensagem sem locações, widget: string }
+              - { name: voltar, label: Botão voltar, widget: string }
+              - { name: tituloSobre, label: Título "Sobre o espaço", widget: string }
+              - { name: tituloInfos, label: Título "Informações", widget: string }
+              - { name: tituloVideo, label: Título "Vídeo", widget: string }
+              - { name: tituloFotos, label: Título "Galeria", widget: string }
+              - { name: verTodasFotos, label: Botão "Ver todas as fotos", widget: string }
+              - { name: outrasLocacoes, label: Título "Outras locações", widget: string }
+              - { name: naoEncontrado, label: Mensagem "não encontrada", widget: string }
+              - { name: ctaTitulo, label: Caixa de contato — título, widget: string }
+              - { name: ctaTexto, label: Caixa de contato — texto, widget: text, required: false }
+              - { name: ctaBotao, label: Caixa de contato — botão, widget: string }
+              - { name: rodape, label: Texto do rodapé, widget: string, required: false }
+
+          - name: layout
+            label: Layout
+            widget: object
+            collapsed: true
+            fields:
+              - { name: colunasDesktop, label: Fotos por linha (computador), widget: select, options: [{label: "2", value: 2}, {label: "3", value: 3}, {label: "4", value: 4}], default: 3 }
+              - name: formatoCapa
+                label: Formato da foto principal
+                widget: select
+                default: "4/5"
+                options:
+                  - { label: "Retrato (4:5)", value: "4/5" }
+                  - { label: "Retrato alto (2:3)", value: "2/3" }
+                  - { label: "Quadrada (1:1)", value: "1/1" }
+                  - { label: "Paisagem (3:2)", value: "3/2" }
+                  - { label: "Paisagem larga (16:9)", value: "16/9" }
+              - { name: cantosArredondados, label: Arredondamento das bordas (px), widget: number, value_type: int, min: 0, max: 30, default: 6 }
+              - name: posicaoNome
+                label: Posição do nome da locação
+                widget: select
+                default: acima
+                options:
+                  - { label: "Acima da foto", value: acima }
+                  - { label: "Abaixo da foto", value: abaixo }
+                  - { label: "Sobre a foto", value: sobre }
+              - { name: mostrarInfosNoCard, label: Mostrar informações abaixo da foto (página inicial), widget: boolean, default: true }
+              - { name: quantidadeInfosNoCard, label: Quantas informações mostrar no cartão, widget: number, value_type: int, min: 0, max: 6, default: 3 }
+              - { name: mostrarResumoNoCard, label: Mostrar resumo no cartão, widget: boolean, default: false }
+              - { name: agruparPorCidade, label: Separar por cidade, widget: boolean, default: true }
+              - { name: mostrarFiltroCidades, label: Botões de filtro por cidade, widget: boolean, default: true }
+              - { name: carrosselNoCelular, label: Fotos deslizantes no celular, widget: boolean, default: true }
+              - name: ordemPaginaLocal
+                label: Seções da página da locação (na ordem)
+                widget: list
+                field:
+                  name: secao
+                  label: Seção
+                  widget: select
+                  options:
+                    - { label: "Mosaico de fotos", value: mosaico }
+                    - { label: "Descrição, informações e contato", value: informacoes }
+                    - { label: "Vídeo", value: video }
+                    - { label: "Galeria completa", value: galeria }
+                    - { label: "Outras locações", value: outras }
+              - { name: incluirCapaNaGaleria, label: Incluir a capa na galeria, widget: boolean, default: true }
+              - { name: quantidadeOutras, label: Quantidade de "outras locações", widget: number, value_type: int, min: 0, max: 6, default: 3 }
+              - { name: animacoes, label: Animações suaves, widget: boolean, default: true }
+
+          - name: contato
+            label: Contato
+            widget: object
+            collapsed: true
+            fields:
+              - { name: whatsapp, label: "WhatsApp (só números, com 55 + DDD)", widget: string, required: false, hint: "Ex: 5511999999999" }
+              - { name: mensagemWhatsapp, label: Mensagem automática do WhatsApp, widget: string, required: false, hint: "{local} é trocado pelo nome da locação." }
+              - { name: instagram, label: Instagram, widget: string, required: false, hint: "Ex: @seuperfil" }
+              - { name: email, label: E-mail, widget: string, required: false }
+
+          - name: protecao
+            label: Proteção das fotos
+            widget: object
+            collapsed: true
+            fields:
+              - { name: bloquearCliqueDireito, label: Bloquear clique direito nas fotos, widget: boolean, default: true }
+              - { name: bloquearArrastarImagens, label: Bloquear arrastar fotos, widget: boolean, default: true }
+
+          - name: seo
+            label: Privacidade
+            widget: object
+            collapsed: true
+            fields:
+              - { name: ocultarDoGoogle, label: Ocultar o site do Google (só acessa quem tem o link), widget: boolean, default: true }

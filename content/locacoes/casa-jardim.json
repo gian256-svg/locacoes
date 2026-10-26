@@ -1,0 +1,60 @@
+{
+  "nome": "Casa Jardim",
+  "ordem": 10,
+  "visivel": true,
+  "cidade": "São Paulo",
+  "bairro": "Alto de Pinheiros",
+  "selo": "Destaque",
+  "capa": "https://picsum.photos/seed/casajardim/1000/1250",
+  "resumo": "Casa modernista com jardim tropical, luz natural o dia todo e varanda ampla.",
+  "descricao": "Uma casa modernista cercada por um jardim tropical exuberante. Grandes painéis de vidro garantem luz natural durante todo o dia, ideal para ensaios de moda, editoriais e produções publicitárias.\n\nO espaço conta com sala integrada, cozinha gourmet, varanda coberta e área externa com piscina.",
+  "infos": [
+    {
+      "icone": "area",
+      "rotulo": "Área",
+      "valor": "450 m²"
+    },
+    {
+      "icone": "pessoas",
+      "rotulo": "Capacidade",
+      "valor": "Até 25 pessoas"
+    },
+    {
+      "icone": "luz",
+      "rotulo": "Luz natural",
+      "valor": "Manhã e tarde"
+    },
+    {
+      "icone": "carro",
+      "rotulo": "Estacionamento",
+      "valor": "4 vagas"
+    },
+    {
+      "icone": "relogio",
+      "rotulo": "Diária",
+      "valor": "8h às 20h"
+    },
+    {
+      "icone": "energia",
+      "rotulo": "Energia",
+      "valor": "110v / 220v"
+    }
+  ],
+  "fotos": [
+    "https://picsum.photos/seed/cj1/1600/1067",
+    "https://picsum.photos/seed/cj2/1067/1600",
+    "https://picsum.photos/seed/cj3/1600/1067",
+    "https://picsum.photos/seed/cj4/1600/1067",
+    "https://picsum.photos/seed/cj5/1067/1600",
+    "https://picsum.photos/seed/cj6/1600/1067",
+    "https://picsum.photos/seed/cj7/1600/1067"
+  ],
+  "videos": [
+    {
+      "link": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "arquivo": "",
+      "titulo": "",
+      "vertical": false
+    }
+  ]
+}

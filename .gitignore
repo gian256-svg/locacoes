@@ -2,9 +2,15 @@
 /WhatsApp*
 /referencias/
 
+# Gerados automaticamente pelo build (não editar)
+/dist/
+/config/site.js
+/data/locacoes.js
+
 # Sistema
 Thumbs.db
 desktop.ini
 .DS_Store
 *.tmp
 .vscode/
+node_modules/

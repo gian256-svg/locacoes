@@ -1,0 +1,36 @@
+{
+  "nome": "Fazenda Santa Clara",
+  "ordem": 50,
+  "visivel": true,
+  "cidade": "Campinas",
+  "bairro": "Joaquim Egídio",
+  "selo": "",
+  "capa": "https://picsum.photos/seed/fazendasc/1000/1250",
+  "resumo": "Casarão de fazenda centenário com campos e lago.",
+  "descricao": "Fazenda histórica com casarão centenário, campos abertos, lago e capela. Cenário perfeito para ensaios externos e produções de época.",
+  "infos": [
+    {
+      "icone": "area",
+      "rotulo": "Área",
+      "valor": "15 hectares"
+    },
+    {
+      "icone": "pessoas",
+      "rotulo": "Capacidade",
+      "valor": "Até 100 pessoas"
+    },
+    {
+      "icone": "local",
+      "rotulo": "Distância",
+      "valor": "1h de SP"
+    }
+  ],
+  "fotos": [
+    "https://picsum.photos/seed/fs1/1600/1067",
+    "https://picsum.photos/seed/fs2/1600/1067",
+    "https://picsum.photos/seed/fs3/1600/1067",
+    "https://picsum.photos/seed/fs4/1067/1600",
+    "https://picsum.photos/seed/fs5/1600/1067"
+  ],
+  "videos": []
+}

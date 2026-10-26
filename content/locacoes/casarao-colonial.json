@@ -1,0 +1,30 @@
+{
+  "nome": "Casarão Colonial",
+  "ordem": 60,
+  "visivel": true,
+  "cidade": "Campinas",
+  "bairro": "Cambuí",
+  "selo": "",
+  "capa": "https://picsum.photos/seed/casaraocol/1000/1250",
+  "resumo": "Pátio interno, azulejos portugueses e portas altas de madeira.",
+  "descricao": "Casarão colonial restaurado com pátio interno, azulejos portugueses e portas altas de madeira maciça.",
+  "infos": [
+    {
+      "icone": "area",
+      "rotulo": "Área",
+      "valor": "600 m²"
+    },
+    {
+      "icone": "pessoas",
+      "rotulo": "Capacidade",
+      "valor": "Até 30 pessoas"
+    }
+  ],
+  "fotos": [
+    "https://picsum.photos/seed/cc1/1600/1067",
+    "https://picsum.photos/seed/cc2/1067/1600",
+    "https://picsum.photos/seed/cc3/1600/1067",
+    "https://picsum.photos/seed/cc4/1600/1067"
+  ],
+  "videos": []
+}
