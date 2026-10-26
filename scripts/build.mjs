@@ -93,6 +93,8 @@ const locacoes = fs.readdirSync(pasta)
   .sort((a, b) => a.ordem - b.ordem || a.nome.localeCompare(b.nome, "pt-BR"));
 
 /* ---------------- Gera arquivos ---------------- */
+fs.mkdirSync(r("config"), { recursive: true });
+fs.mkdirSync(r("data"), { recursive: true });
 fs.writeFileSync(r("config/site.js"), paraJS("SITE_CONFIG", site));
 fs.writeFileSync(r("data/locacoes.js"), paraJS("LOCACOES", locacoes));
 
