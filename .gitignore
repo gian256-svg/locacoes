@@ -1,0 +1,10 @@
+# Arquivos de referência / temporários
+/WhatsApp*
+/referencias/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+.vscode/

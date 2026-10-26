@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' file:; style-src 'self' file: https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' file: https: data:; media-src 'self' file: https:; frame-src https://www.youtube-nocookie.com https://player.vimeo.com https://drive.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Remova a linha abaixo se quiser que o site apareça no Google -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>Locações Disponíveis</title>
+  <meta name="description" content="Locações disponíveis para fotografia e produções.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pagina-inicio">
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo" id="topo"></header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <p class="eyebrow" id="hero-eyebrow"></p>
+      <h1 class="titulo-ouro" id="hero-titulo"></h1>
+      <div class="ornamento" aria-hidden="true"><span></span></div>
+      <p class="hero__subtitulo" id="hero-subtitulo"></p>
+    </section>
+    <nav class="filtros" id="filtros" aria-label="Filtrar por cidade"></nav>
+    <div class="galeria" id="galeria"></div>
+  </main>
+
+  <footer class="rodape" id="rodape"></footer>
+
+  <script src="config/site.js"></script>
+  <script src="data/locacoes.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
