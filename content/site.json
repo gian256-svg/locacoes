@@ -33,12 +33,14 @@
     "tituloInfos": "Informações",
     "tituloVideo": "Vídeo do local",
     "tituloFotos": "Galeria de fotos",
+    "tituloEnsaios": "",
+    "subtituloEnsaios": "",
     "verTodasFotos": "Ver todas as fotos",
     "outrasLocacoes": "Outras locações",
     "naoEncontrado": "Locação não encontrada",
     "ctaTitulo": "Gostou deste local?",
-    "ctaTexto": "É só me avisar, e alinharemos os detalhes.",
-    "ctaBotao": "Escolher local",
+    "ctaTexto": "",
+    "ctaBotao": "Me avise aqui.",
     "rodape": "Locações para ensaios e produções."
   },
   "layout": {
