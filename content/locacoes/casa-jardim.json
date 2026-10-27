@@ -10,19 +10,19 @@
   "descricao": "Uma casa modernista cercada por um jardim tropical exuberante. Grandes painéis de vidro garantem luz natural durante todo o dia, ideal para ensaios de moda, editoriais e produções publicitárias.\n\nO espaço conta com sala integrada, cozinha gourmet, varanda coberta e área externa com piscina.",
   "infos": [
     {
-      "icone": "check",
+      "icone": "relogio",
       "rotulo": "manhã e tarde",
-      "valor": "TODOS OS DIAS"
+      "valor": "Todos os dias"
     },
     {
-      "icone": "check",
+      "icone": "luz",
       "rotulo": "Janela de ponta a ponta",
       "valor": "Iluminação natural"
     },
     {
       "icone": "check",
-      "rotulo": "Ventilador",
-      "valor": "Climatizado"
+      "rotulo": ".",
+      "valor": "Ventilador"
     },
     {
       "icone": "check",
