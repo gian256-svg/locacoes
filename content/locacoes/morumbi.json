@@ -1,9 +1,9 @@
 {
-  "nome": "Morumbi",
+  "nome": "Pilar",
   "visivel": true,
-  "ordem": 30,
+  "ordem": 31,
   "cidade": "São Paulo",
-  "bairro": "Jardim guedala",
+  "bairro": "Vila Mafra",
   "selo": "",
   "capa": "/assets/uploads/1001021085.webp",
   "resumo": "",
@@ -26,19 +26,6 @@
     }
   ],
   "fotos": [
-    "/assets/uploads/1001021085.webp",
-    "/assets/uploads/1001021089.webp",
-    "/assets/uploads/1001021090.webp",
-    "/assets/uploads/1001021093.webp",
-    "/assets/uploads/1001021101.webp",
-    "/assets/uploads/1001021080.webp",
-    "/assets/uploads/1001021099.webp",
-    "/assets/uploads/1001021102.webp",
-    "/assets/uploads/1001021106.webp",
-    "/assets/uploads/1001021079.webp",
-    "/assets/uploads/1001021109.webp",
-    "/assets/uploads/1001021095.webp",
-    "/assets/uploads/1001023010.webp",
     "/assets/uploads/1001022852.webp"
   ],
   "videos": [
@@ -51,15 +38,16 @@
     }
   ],
   "ensaios": [
-    "/assets/uploads/1001023217.webp",
-    "/assets/uploads/1001023116.webp",
-    "/assets/uploads/1001023101.webp",
-    "/assets/uploads/1001023112.webp",
-    "/assets/uploads/1001023118.webp",
-    "/assets/uploads/1001023117.webp",
-    "/assets/uploads/1001023103.webp",
-    "/assets/uploads/1001023047.webp",
-    "/assets/uploads/1001023048.webp",
-    "/assets/uploads/1001023033.webp"
+    "/assets/uploads/1001023060.webp",
+    "/assets/uploads/1001023054.webp",
+    "/assets/uploads/1001023035.webp",
+    "/assets/uploads/1001023038.webp",
+    "/assets/uploads/1001023052.webp",
+    "/assets/uploads/1001023036.webp",
+    "/assets/uploads/1001023039.webp",
+    "/assets/uploads/1001023059.webp",
+    "/assets/uploads/1001023080.webp",
+    "/assets/uploads/1001023086.webp",
+    "/assets/uploads/1001023058.webp"
   ]
 }
