@@ -1,7 +1,7 @@
 {
   "nome": "Estúdio Luz Natural",
-  "ordem": 30,
   "visivel": true,
+  "ordem": 30,
   "cidade": "São Paulo",
   "bairro": "Vila Madalena",
   "selo": "Novo",
@@ -10,8 +10,8 @@
   "descricao": "Estúdio com paredes brancas, ciclorama infinito e claraboias que garantem uma luz suave e difusa.",
   "infos": [
     {
-      "icone": "area",
-      "rotulo": "Área",
+      "icone": "relogio",
+      "rotulo": "Todos os dias",
       "valor": "120 m²"
     },
     {
