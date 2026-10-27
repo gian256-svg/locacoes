@@ -1,0 +1,65 @@
+{
+  "nome": "Morumbi",
+  "visivel": true,
+  "ordem": 30,
+  "cidade": "São Paulo",
+  "bairro": "Jardim guedala",
+  "selo": "",
+  "capa": "/assets/uploads/1001021085.webp",
+  "resumo": "",
+  "descricao": "Casa de 3 andares, com diversos cenários e uma vibe rústica e mistériosa, pois mistura luz natural e sombras que criam esse clima. Além de área aberta pra piscina e corredor com matinhos.\n\nNão disponibiliza estacionamento.\n📍 Metro mais próximo: São Paulo - Morumbi",
+  "infos": [
+    {
+      "icone": "relogio",
+      "rotulo": "manhã e tarde",
+      "valor": "Todos os dias"
+    },
+    {
+      "icone": "luz",
+      "rotulo": "Iluminação natural e sombras",
+      "valor": "Iluminação natural"
+    },
+    {
+      "icone": "check",
+      "rotulo": "",
+      "valor": "Ventilador"
+    }
+  ],
+  "fotos": [
+    "/assets/uploads/1001021085.webp",
+    "/assets/uploads/1001021089.webp",
+    "/assets/uploads/1001021090.webp",
+    "/assets/uploads/1001021093.webp",
+    "/assets/uploads/1001021101.webp",
+    "/assets/uploads/1001021080.webp",
+    "/assets/uploads/1001021099.webp",
+    "/assets/uploads/1001021102.webp",
+    "/assets/uploads/1001021106.webp",
+    "/assets/uploads/1001021079.webp",
+    "/assets/uploads/1001021109.webp",
+    "/assets/uploads/1001021095.webp",
+    "/assets/uploads/1001023010.webp",
+    "/assets/uploads/1001022852.webp"
+  ],
+  "videos": [
+    {
+      "link": "",
+      "arquivo": "/assets/uploads/1001022856.mp4",
+      "titulo": "",
+      "formato": "auto",
+      "vertical": false
+    }
+  ],
+  "ensaios": [
+    "/assets/uploads/1001023217.webp",
+    "/assets/uploads/1001023116.webp",
+    "/assets/uploads/1001023101.webp",
+    "/assets/uploads/1001023112.webp",
+    "/assets/uploads/1001023118.webp",
+    "/assets/uploads/1001023117.webp",
+    "/assets/uploads/1001023103.webp",
+    "/assets/uploads/1001023047.webp",
+    "/assets/uploads/1001023048.webp",
+    "/assets/uploads/1001023033.webp"
+  ]
+}
