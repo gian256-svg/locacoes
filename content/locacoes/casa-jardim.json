@@ -1,11 +1,11 @@
 {
-  "nome": "Efigênia",
+  "nome": "Anhangabaú",
   "visivel": true,
   "ordem": 10,
   "cidade": "São Paulo",
   "bairro": "Centro de São Paulo",
   "selo": "Destaque",
-  "capa": "https://picsum.photos/seed/casajardim/1000/1250",
+  "capa": "/assets/uploads/teste/1001020848.webp",
   "resumo": "Casa modernista com jardim tropical, luz natural o dia todo e varanda ampla.",
   "descricao": "Uma casa modernista cercada por um jardim tropical exuberante. Grandes painéis de vidro garantem luz natural durante todo o dia, ideal para ensaios de moda, editoriais e produções publicitárias.\n\nO espaço conta com sala integrada, cozinha gourmet, varanda coberta e área externa com piscina.",
   "infos": [
@@ -27,17 +27,18 @@
     {
       "icone": "check",
       "rotulo": "Fundo infinito",
-      "valor": "Laranja ou branco (acréscimo)"
+      "valor": "Verde ou branco (acréscimo)"
     }
   ],
   "fotos": [
-    "https://picsum.photos/seed/cj1/1600/1067",
-    "https://picsum.photos/seed/cj2/1067/1600",
-    "https://picsum.photos/seed/cj3/1600/1067",
-    "https://picsum.photos/seed/cj4/1600/1067",
-    "https://picsum.photos/seed/cj5/1067/1600",
-    "https://picsum.photos/seed/cj6/1600/1067",
-    "https://picsum.photos/seed/cj7/1600/1067"
+    "/assets/uploads/teste/1001020848.webp",
+    "/assets/uploads/1001020834.webp",
+    "/assets/uploads/1001020837.webp",
+    "/assets/uploads/1001020839.webp",
+    "/assets/uploads/1001020841.webp",
+    "/assets/uploads/1001020827.webp",
+    "/assets/uploads/1001020824.webp",
+    "/assets/uploads/1001020831.webp"
   ],
   "videos": [
     {
