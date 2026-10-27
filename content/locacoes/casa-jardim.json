@@ -3,11 +3,11 @@
   "visivel": true,
   "ordem": 10,
   "cidade": "São Paulo",
-  "bairro": "Centro de São Paulo",
+  "bairro": "Centro",
   "selo": "Destaque",
   "capa": "/assets/uploads/teste/1001020848.webp",
-  "resumo": "Studio",
-  "descricao": "Studio/sala com muita iluminação natural em qualquer tipo de dia, seja de sol ou nublado. \nIdeal para qualquer estilo de ensaio, pois comporta ambientes tanto mais íntimista como mesa para ensaios profissional.\n\nNão abre aos domingos e não possui estacionamento. Fica ao lado da estacão Anhangabaú.",
+  "resumo": "O espaço conta com amplas janelas e muita iluminação natural. Clean e industrial.",
+  "descricao": "A sala é ideal para diferentes propostas de ensaio: desde fotos mais intimistas, com cama, sofá e plantas, até produções profissionais que pedem um cenários com mesa, ou fundo infinito na cor verde ou branca com acréscimo.\nExiste a possibilidade de usar a banheira com água, consulte o acréscimo.\n\nLocal não abre aos domingos; e\nnão disponibiliza estacionamento.\n📍 Ao lado do metro Anhangabaú.",
   "infos": [
     {
       "icone": "relogio",
@@ -32,12 +32,12 @@
   ],
   "fotos": [
     "/assets/uploads/teste/1001020848.webp",
-    "/assets/uploads/1001020834.webp",
-    "/assets/uploads/1001020837.webp",
-    "/assets/uploads/1001020839.webp",
+    "/assets/uploads/1001020845.webp",
     "/assets/uploads/1001020841.webp",
+    "/assets/uploads/1001020837.webp",
+    "/assets/uploads/1001020829.webp",
+    "/assets/uploads/1001020839.webp",
     "/assets/uploads/1001020827.webp",
-    "/assets/uploads/1001020824.webp",
     "/assets/uploads/1001020831.webp"
   ],
   "videos": [
@@ -54,6 +54,7 @@
     "/assets/uploads/1001022725.webp",
     "/assets/uploads/1001022772.webp",
     "/assets/uploads/1001022748.webp",
-    "/assets/uploads/1001022735.webp"
+    "/assets/uploads/1001022735.webp",
+    "/assets/uploads/1001022736.webp"
   ]
 }
