@@ -45,7 +45,15 @@
       "link": "",
       "arquivo": "/assets/uploads/1001020858.mp4",
       "titulo": "",
+      "formato": "auto",
       "vertical": false
     }
+  ],
+  "ensaios": [
+    "/assets/uploads/1001022731.webp",
+    "/assets/uploads/1001022725.webp",
+    "/assets/uploads/1001022772.webp",
+    "/assets/uploads/1001022748.webp",
+    "/assets/uploads/1001022735.webp"
   ]
 }
