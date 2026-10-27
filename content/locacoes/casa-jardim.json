@@ -1,22 +1,22 @@
 {
-  "nome": "Casa Jardim",
-  "ordem": 10,
+  "nome": "Efigênia",
   "visivel": true,
+  "ordem": 10,
   "cidade": "São Paulo",
-  "bairro": "Alto de Pinheiros",
+  "bairro": "Centro de São Paulo",
   "selo": "Destaque",
   "capa": "https://picsum.photos/seed/casajardim/1000/1250",
   "resumo": "Casa modernista com jardim tropical, luz natural o dia todo e varanda ampla.",
   "descricao": "Uma casa modernista cercada por um jardim tropical exuberante. Grandes painéis de vidro garantem luz natural durante todo o dia, ideal para ensaios de moda, editoriais e produções publicitárias.\n\nO espaço conta com sala integrada, cozinha gourmet, varanda coberta e área externa com piscina.",
   "infos": [
     {
-      "icone": "area",
-      "rotulo": "Área",
-      "valor": "450 m²"
+      "icone": "relogio",
+      "rotulo": "Todos os dias",
+      "valor": "."
     },
     {
-      "icone": "pessoas",
-      "rotulo": "Capacidade",
+      "icone": "check",
+      "rotulo": "climatizado",
       "valor": "Até 25 pessoas"
     },
     {
@@ -25,7 +25,7 @@
       "valor": "Manhã e tarde"
     },
     {
-      "icone": "carro",
+      "icone": "energia",
       "rotulo": "Estacionamento",
       "valor": "4 vagas"
     },
