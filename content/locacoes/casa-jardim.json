@@ -11,18 +11,18 @@
   "infos": [
     {
       "icone": "check",
-      "rotulo": "Todos os dias",
-      "valor": "Manha e tarde"
+      "rotulo": "manhã e tarde",
+      "valor": "TODOS OS DIAS"
     },
     {
       "icone": "check",
-      "rotulo": "Iluminação natural",
-      "valor": "Janela de ponta a ponta"
+      "rotulo": "Janela de ponta a ponta",
+      "valor": "Iluminação natural"
     },
     {
       "icone": "check",
-      "rotulo": "Climarizado",
-      "valor": "Ventiladores"
+      "rotulo": "Ventilador",
+      "valor": "Climatizado"
     },
     {
       "icone": "check",
