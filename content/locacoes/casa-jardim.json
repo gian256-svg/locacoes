@@ -17,12 +17,12 @@
     {
       "icone": "check",
       "rotulo": "climatizado",
-      "valor": "Até 25 pessoas"
+      "valor": "Ventilador"
     },
     {
-      "icone": "luz",
+      "icone": "relogio",
       "rotulo": "Luz natural",
-      "valor": "Manhã e tarde"
+      "valor": "todos os dias"
     },
     {
       "icone": "energia",
