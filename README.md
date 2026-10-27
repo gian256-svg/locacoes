@@ -44,14 +44,29 @@ flowchart LR
 - GitHub → repositório → **Settings → Pages** → em *Source* escolha **None** (ou "Unpublish").
 - **Settings → General → Danger Zone → Change visibility → Private**.
 
-### 3. Primeiro acesso ao painel
-1. Abra `https://locacoes-1cq.pages.dev/admin`
-2. Clique em **Sign In with Token**.
-3. Clique no link que aparece: ele abre o GitHub com as permissões certas já marcadas. Clique em **Generate token** e copie o código.
-4. Cole o código no painel. Pronto: o navegador lembra o acesso.
+### 3. Ativar o login com GitHub (uma vez só, ~3 min)
+Assim você entra no painel com sua conta do GitHub, sem token que expira.
 
-> Para usar no celular, faça o mesmo passo no navegador do celular (pode gerar outro token).
-> **Guarde o token como uma senha.** Se perder ou vazar, apague-o em GitHub → Settings → Developer settings → Personal access tokens.
+**a) Criar o "app de login" no GitHub**
+1. Abra https://github.com/settings/applications/new
+2. Preencha:
+   - **Application name:** `Painel Locações`
+   - **Homepage URL:** `https://locacoes-1cq.pages.dev`
+   - **Authorization callback URL:** `https://locacoes-1cq.pages.dev/api/callback`
+3. Clique em **Register application**.
+4. Copie o **Client ID**. Depois clique em **Generate a new client secret** e copie o **segredo**, que só aparece uma vez.
+
+**b) Colocar os códigos na Cloudflare**
+1. Cloudflare → seu projeto → **Configurações** → **Variáveis e segredos** → **Adicionar**.
+2. Crie a variável `GITHUB_CLIENT_ID` com o Client ID (tipo: Texto).
+3. Crie a variável `GITHUB_CLIENT_SECRET` com o segredo (tipo: **Segredo**).
+4. Salve. Depois vá em **Implantações** e, na implantação mais recente, clique em **⋯ → Tentar novamente**, para aplicar as variáveis.
+
+**c) Entrar**
+Abra `https://locacoes-1cq.pages.dev/admin` e clique em **Sign In with GitHub**. Em qualquer computador ou celular, é só entrar com sua conta do GitHub.
+
+> O acesso não expira. Para revogar: GitHub → Settings → Applications → Authorized OAuth Apps.
+> Alternativa: **Sign In with Token** continua disponível, caso o login com GitHub esteja indisponível.
 
 ---
 

@@ -6,7 +6,9 @@ backend:
   name: github
   repo: gian256-svg/locacoes
   branch: main
-  auth_methods: [token]
+  auth_methods: [oauth, token]
+  base_url: https://locacoes-1cq.pages.dev # login com GitHub (functions/api/auth.js)
+  auth_endpoint: api/auth
   commit_messages:
     create: "Painel: nova locação {{slug}}"
     update: "Painel: atualiza {{slug}}"
