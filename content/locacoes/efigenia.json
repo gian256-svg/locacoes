@@ -1,12 +1,12 @@
 {
-  "nome": "Efigênia",
+  "nome": "Morumbi",
   "visivel": true,
-  "ordem": 10,
+  "ordem": 30,
   "cidade": "São Paulo",
-  "bairro": "Centro",
-  "selo": "Destaque",
-  "capa": "/assets/uploads/1001020877.webp",
-  "resumo": "O espaço conta com amplas janelas e muita iluminação natural. Clean e industrial.",
+  "bairro": "Jardim guedala",
+  "selo": "",
+  "capa": "/assets/uploads/1001021085.webp",
+  "resumo": "",
   "descricao": "A sala é ideal para diferentes propostas de ensaio: desde fotos mais intimistas, com cama, sofá e plantas, até produções profissionais que pedem um cenários com mesa, ou fundo infinito na cor verde ou branca com acréscimo.\nExiste a possibilidade de usar a banheira com água, consulte o acréscimo.\n\nNão disponibiliza estacionamento.\n📍 2 min do metro São Bento.",
   "infos": [
     {
@@ -16,26 +16,30 @@
     },
     {
       "icone": "luz",
-      "rotulo": "Janela de ponta a ponta",
+      "rotulo": "Iluminação natural e sombras",
       "valor": "Iluminação natural"
     },
     {
       "icone": "check",
       "rotulo": "",
-      "valor": "Ventiladores"
-    },
-    {
-      "icone": "check",
-      "rotulo": "Fundo infinito",
-      "valor": "Laranja ou branco (acréscimo)"
+      "valor": "Ventilador"
     }
   ],
   "fotos": [
-    "/assets/uploads/1001020873.webp",
-    "/assets/uploads/1001020875.webp",
-    "/assets/uploads/1001020869.webp",
-    "/assets/uploads/1001020863.webp",
-    "/assets/uploads/1001020861.webp"
+    "/assets/uploads/1001021085.webp",
+    "/assets/uploads/1001021089.webp",
+    "/assets/uploads/1001021090.webp",
+    "/assets/uploads/1001021093.webp",
+    "/assets/uploads/1001021101.webp",
+    "/assets/uploads/1001021080.webp",
+    "/assets/uploads/1001021099.webp",
+    "/assets/uploads/1001021102.webp",
+    "/assets/uploads/1001021106.webp",
+    "/assets/uploads/1001021079.webp",
+    "/assets/uploads/1001021109.webp",
+    "/assets/uploads/1001021095.webp",
+    "/assets/uploads/1001023010.webp",
+    "/assets/uploads/1001022852.webp"
   ],
   "videos": [
     {
@@ -47,11 +51,6 @@
     }
   ],
   "ensaios": [
-    "/assets/uploads/1001022728.webp",
-    "/assets/uploads/1001022733.webp",
-    "/assets/uploads/1001022749.webp",
-    "/assets/uploads/1001022734.webp",
-    "/assets/uploads/1001022726.webp",
     "/assets/uploads/1001022750.webp"
   ]
 }
