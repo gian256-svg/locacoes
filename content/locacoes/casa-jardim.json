@@ -6,13 +6,13 @@
   "bairro": "Centro de São Paulo",
   "selo": "Destaque",
   "capa": "/assets/uploads/teste/1001020848.webp",
-  "resumo": "Casa modernista com jardim tropical, luz natural o dia todo e varanda ampla.",
-  "descricao": "Uma casa modernista cercada por um jardim tropical exuberante. Grandes painéis de vidro garantem luz natural durante todo o dia, ideal para ensaios de moda, editoriais e produções publicitárias.\n\nO espaço conta com sala integrada, cozinha gourmet, varanda coberta e área externa com piscina.",
+  "resumo": "Studio",
+  "descricao": "Studio/sala com muita iluminação natural em qualquer tipo de dia, seja de sol ou nublado. \nIdeal para qualquer estilo de ensaio, pois comporta ambientes tanto mais íntimista como mesa para ensaios profissional.\n\nNão abre aos domingos e não possui estacionamento. Fica ao lado da estacão Anhangabaú.",
   "infos": [
     {
       "icone": "relogio",
       "rotulo": "manhã e tarde",
-      "valor": "Todos os dias"
+      "valor": "Segunda à sábado"
     },
     {
       "icone": "luz",
