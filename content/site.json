@@ -21,7 +21,7 @@
     "titulosEmMaiusculas": false
   },
   "textos": {
-    "eyebrow": "Portfólio de espaços",
+    "eyebrow": "Many Conva Fotografia",
     "titulo": "Locações Disponíveis",
     "subtitulo": "São Paulo",
     "filtroTodas": "Todas",
@@ -39,17 +39,19 @@
     "ctaTitulo": "Gostou deste local?",
     "ctaTexto": "Fale com a gente para consultar datas, valores e condições.",
     "ctaBotao": "Consultar disponibilidade",
-    "rodape": "Locações para ensaios, produções e eventos."
+    "rodape": "Locações para ensaios e produções."
   },
   "layout": {
     "colunasDesktop": 3,
     "formatoCapa": "4/5",
     "cantosArredondados": 6,
     "posicaoNome": "acima",
+    "mostrarBairroNoCard": true,
     "mostrarInfosNoCard": true,
     "quantidadeInfosNoCard": 3,
     "mostrarResumoNoCard": false,
     "agruparPorCidade": true,
+    "mostrarQuantidadePorCidade": true,
     "mostrarFiltroCidades": true,
     "carrosselNoCelular": true,
     "ordemPaginaLocal": [
@@ -61,18 +63,16 @@
     ],
     "incluirCapaNaGaleria": true,
     "quantidadeOutras": 3,
-    "animacoes": true,
-    "mostrarBairroNoCard": true,
-    "mostrarQuantidadePorCidade": true,
     "mostrarCaixaContato": true,
     "mostrarContatoNoTopo": true,
     "mostrarRodape": true,
-    "mostrarOrnamentos": true
+    "mostrarOrnamentos": true,
+    "animacoes": true
   },
   "contato": {
-    "whatsapp": "5511999999999",
-    "mensagemWhatsapp": "Olá! Vi a locação {local} e gostaria de mais informações.",
-    "instagram": "@seuperfil",
+    "whatsapp": "5513997656388",
+    "mensagemWhatsapp": "Olá! Vi a locação {local} e ela foi a minha escolha.",
+    "instagram": "@manyconvafotografia",
     "email": ""
   },
   "protecao": {
