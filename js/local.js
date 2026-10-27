@@ -98,25 +98,43 @@
     var v = loc.video || loc.videos;
     if (!v) return [];
     return [].concat(v).map(function (x) {
-      if (typeof x === "string") return { src: App.safeUrl(x) };
-      if (x && typeof x === "object") return { src: App.safeUrl(x.src), titulo: x.titulo, vertical: !!x.vertical, capa: App.safeUrl(x.capa) };
+      if (typeof x === "string") return { src: App.safeUrl(x), formato: "auto" };
+      if (x && typeof x === "object") return { src: App.safeUrl(x.src), titulo: x.titulo, formato: x.formato || (x.vertical ? "vertical" : "auto"), capa: App.safeUrl(x.capa) };
       return null;
     }).filter(function (x) { return x && x.src; });
+  }
+
+  /* Ajusta a proporção do player (largura / altura do vídeo) */
+  function aplicarProporcao(caixa, w, h) {
+    if (!(w > 0 && h > 0)) return;
+    caixa.style.setProperty("--ar", w + " / " + h);
+    caixa.style.setProperty("--arn", String(w / h));
+    caixa.classList.toggle("player--vertical", h > w);
   }
 
   function player(v) {
     var m, frame = null;
     var iframeAttrs = { loading: "lazy", allowfullscreen: true, referrerpolicy: "strict-origin-when-cross-origin", title: v.titulo || ("Vídeo — " + loc.nome), allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" };
-    if ((m = v.src.match(RX_YT))) frame = "https://www.youtube-nocookie.com/embed/" + m[1] + "?rel=0&modestbranding=1&playsinline=1";
+    var vertical = v.formato === "vertical";
+    if ((m = v.src.match(RX_YT))) {
+      frame = "https://www.youtube-nocookie.com/embed/" + m[1] + "?rel=0&modestbranding=1&playsinline=1";
+      if (v.formato === "auto" && /\/shorts\//i.test(v.src)) vertical = true; // YouTube Shorts é sempre em pé
+    }
     else if ((m = v.src.match(RX_VIMEO))) frame = "https://player.vimeo.com/video/" + m[1] + "?dnt=1&title=0&byline=0&portrait=0";
     else if ((m = v.src.match(RX_DRIVE))) frame = "https://drive.google.com/file/d/" + m[1] + "/preview";
 
+    var caixa = el("div", { class: "player" + (vertical ? " player--vertical" : "") });
     var midia;
     if (frame) { iframeAttrs.src = frame; midia = el("iframe", iframeAttrs); }
-    else midia = el("video", { src: v.src, controls: true, playsinline: true, preload: "metadata", controlslist: "nodownload", poster: v.capa || App.safeUrl(loc.capa) || null });
+    else {
+      midia = el("video", { src: v.src, controls: true, playsinline: true, preload: "metadata", controlslist: "nodownload", poster: v.capa || App.safeUrl(loc.capa) || null });
+      // Arquivo enviado: no modo automático, usa o formato real do vídeo
+      if (v.formato === "auto") midia.addEventListener("loadedmetadata", function () { aplicarProporcao(caixa, midia.videoWidth, midia.videoHeight); });
+    }
+    caixa.append(midia);
 
     return el("figure", { class: "video revelar" }, [
-      el("div", { class: "player" + (v.vertical ? " player--vertical" : "") }, midia),
+      caixa,
       v.titulo ? el("figcaption", { class: "video__legenda", text: v.titulo }) : null
     ]);
   }
@@ -161,9 +179,26 @@
     ]);
   }
 
+  /* ---------- Ensaios feitos aqui ---------- */
+  function ensaios() {
+    var lista = (Array.isArray(loc.ensaios) ? loc.ensaios : [])
+      .map(function (s) { return { src: App.safeUrl(s) }; })
+      .filter(function (f) { return f.src; });
+    if (!lista.length) return null;
+    var lb = criarLightbox(lista);
+    return el("section", { class: "container ensaios", id: "ensaios" }, [
+      cab("h2", "titulo-secao titulo-secao--centro revelar", texto("tituloEnsaios", "Ensaios feitos aqui")),
+      texto("subtituloEnsaios", "") ? el("p", { class: "ensaios__sub revelar", text: texto("subtituloEnsaios", "") }) : null,
+      el("div", { class: "masonry" }, lista.map(function (f, i) {
+        return el("button", { type: "button", class: "masonry__item revelar", "aria-label": "Abrir foto de ensaio " + (i + 1), onclick: function () { lb.abrir(i); } },
+          el("img", { src: f.src, alt: "Ensaio em " + loc.nome, loading: "lazy", decoding: "async" }));
+      }))
+    ]);
+  }
+
   /* ---------- Montagem ---------- */
-  var secoes = { mosaico: mosaico, informacoes: informacoes, video: video, galeria: galeria, outras: outras };
-  var ordem = Array.isArray(L.ordemPaginaLocal) ? L.ordemPaginaLocal : ["mosaico", "informacoes", "video", "galeria", "outras"];
+  var secoes = { mosaico: mosaico, informacoes: informacoes, video: video, galeria: galeria, ensaios: ensaios, outras: outras };
+  var ordem = Array.isArray(L.ordemPaginaLocal) ? L.ordemPaginaLocal : ["mosaico", "informacoes", "video", "galeria", "ensaios", "outras"];
   main.append(hero());
   ordem.forEach(function (nome) {
     if (secoes[nome]) { var s = secoes[nome](); if (s) main.append(s); }

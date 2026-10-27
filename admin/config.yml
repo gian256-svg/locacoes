@@ -140,7 +140,22 @@ collections:
             accept: "video/*"
             hint: "MP4 de até 20 MB. Para vídeos maiores, use o YouTube."
           - { name: titulo, label: Título (opcional), widget: string, required: false }
-          - { name: vertical, label: Vídeo em pé (gravado no celular), widget: boolean, default: false, required: false }
+          - name: formato
+            label: Formato do vídeo
+            widget: select
+            required: false
+            default: auto
+            options:
+              - { label: "Automático (detecta sozinho)", value: auto }
+              - { label: "Horizontal 16:9 (deitado)", value: horizontal }
+              - { label: "Vertical 9:16 (em pé / Reels)", value: vertical }
+            hint: "Arquivos enviados e links de YouTube Shorts são detectados sozinhos. Para outros links (YouTube, Drive, Vimeo), escolha o formato."
+      - name: ensaios
+        label: Ensaios feitos aqui
+        widget: image
+        multiple: true
+        required: false
+        hint: "Fotos de ensaios que você já fez nesta locação. Aparecem no final da página. Arraste para mudar a ordem."
 
   # ==================================================================
   # CONFIGURAÇÕES
@@ -233,6 +248,8 @@ collections:
               - { name: tituloInfos, label: "Locação — título 'Informações'", widget: string, required: false }
               - { name: tituloVideo, label: "Locação — título 'Vídeo'", widget: string, required: false }
               - { name: tituloFotos, label: "Locação — título 'Galeria'", widget: string, required: false }
+              - { name: tituloEnsaios, label: "Locação — título 'Ensaios feitos aqui'", widget: string, required: false }
+              - { name: subtituloEnsaios, label: "Locação — frase abaixo de 'Ensaios feitos aqui'", widget: string, required: false }
               - { name: verTodasFotos, label: "Locação — botão 'Ver todas as fotos'", widget: string, required: false }
               - { name: outrasLocacoes, label: "Locação — título 'Outras locações'", widget: string, required: false }
               - { name: naoEncontrado, label: "Mensagem de locação não encontrada", widget: string, required: false }
@@ -287,6 +304,7 @@ collections:
                     - { label: "Descrição, informações e contato", value: informacoes }
                     - { label: "Vídeo", value: video }
                     - { label: "Galeria completa", value: galeria }
+                    - { label: "Ensaios feitos aqui", value: ensaios }
                     - { label: "Outras locações", value: outras }
               - { name: incluirCapaNaGaleria, label: Incluir a capa na galeria, widget: boolean, default: true }
               - { name: quantidadeOutras, label: Quantidade de "outras locações", widget: number, value_type: int, min: 0, max: 6, default: 3 }

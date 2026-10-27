@@ -79,9 +79,12 @@ const locacoes = fs.readdirSync(pasta)
       .map((v) => ({
         src: caminho(v.link) || caminho(v.arquivo),
         titulo: v.titulo || "",
-        vertical: !!v.vertical
+        // "auto" = o site detecta; o antigo campo "vertical" continua valendo
+        formato: ["horizontal", "vertical"].includes(v.formato) ? v.formato : (v.vertical ? "vertical" : "auto")
       }))
       .filter((v) => v.src);
+    const listaFotos = (lista) => (Array.isArray(lista) ? lista : [])
+      .map((x) => caminho(typeof x === "string" ? x : x && x.src)).filter(Boolean);
     return {
       id: f.replace(/\.json$/, ""),
       ordem: Number(d.ordem) || 0,
@@ -94,7 +97,8 @@ const locacoes = fs.readdirSync(pasta)
       resumo: d.resumo || "",
       descricao: d.descricao || "",
       infos: (d.infos || []).filter((i) => i && (i.rotulo || i.valor)),
-      fotos: (d.fotos || []).map((x) => caminho(typeof x === "string" ? x : x && x.src)).filter(Boolean),
+      fotos: listaFotos(d.fotos),
+      ensaios: listaFotos(d.ensaios),
       video: videos
     };
   })
@@ -166,9 +170,10 @@ async function otimizar(rel) {
 
 const locacoesPublicadas = [];
 for (const l of locacoes) {
-  const fotos = [];
+  const fotos = [], ensaios = [];
   for (const f of l.fotos) fotos.push(await otimizar(f));
-  locacoesPublicadas.push({ ...l, capa: await otimizar(l.capa), fotos });
+  for (const f of l.ensaios) ensaios.push(await otimizar(f));
+  locacoesPublicadas.push({ ...l, capa: await otimizar(l.capa), fotos, ensaios });
 }
 fs.writeFileSync(path.join(DIST, "data/locacoes.js"), paraJS("LOCACOES", locacoesPublicadas));
 if (sharp) console.log(`✔ ${otimizadas} foto(s) otimizada(s)`);
