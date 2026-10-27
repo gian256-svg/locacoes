@@ -27,12 +27,7 @@ media_libraries:
     config:
       max_file_size: 20971520 # 20 MB (limite da hospedagem gratuita é 25 MB por arquivo)
       slugify_filename: true
-      transformations:
-        raster_image: # fotos são convertidas para WebP e reduzidas automaticamente
-          format: webp
-          quality: 85
-          width: 2400
-          height: 2400
+      # As fotos são otimizadas automaticamente na publicação (scripts/build.mjs)
 
 slug:
   encoding: ascii

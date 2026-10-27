@@ -130,6 +130,49 @@ for (const html of ["index.html", "local.html"]) {
 }
 fs.rmSync(path.join(DIST, "assets/locacoes/LEIA-ME.md"), { force: true });
 
+/* ---------------- Otimização das fotos ----------------
+   Fotos enviadas pelo painel (assets/uploads) viram WebP de até 2000px
+   no site publicado. O original fica guardado no repositório.
+   Se o "sharp" não estiver instalado ou a foto falhar, usa a original. */
+let sharp = null;
+try { sharp = (await import("sharp")).default; } catch { console.log("ℹ sharp não instalado — fotos publicadas sem otimização"); }
+
+const cacheOtim = new Map();
+let otimizadas = 0;
+async function otimizar(rel) {
+  if (!sharp || typeof rel !== "string" || !/^assets\/uploads\/.+\.(jpe?g|png|webp|tiff?|avif)$/i.test(rel)) return rel;
+  if (cacheOtim.has(rel)) return cacheOtim.get(rel);
+  let final = rel;
+  const origem = r(rel);
+  if (fs.existsSync(origem)) {
+    const destRel = "assets/otimizadas/" + rel.slice("assets/uploads/".length).replace(/\.[^./]+$/, "") + ".webp";
+    const dest = path.join(DIST, destRel);
+    try {
+      fs.mkdirSync(path.dirname(dest), { recursive: true });
+      await sharp(origem, { failOn: "none" })
+        .rotate()
+        .resize({ width: 2000, height: 2000, fit: "inside", withoutEnlargement: true })
+        .webp({ quality: 82 })
+        .toFile(dest);
+      final = destRel;
+      otimizadas++;
+    } catch (e) {
+      console.warn(`⚠ Não foi possível otimizar ${rel}: ${e.message}`);
+    }
+  }
+  cacheOtim.set(rel, final);
+  return final;
+}
+
+const locacoesPublicadas = [];
+for (const l of locacoes) {
+  const fotos = [];
+  for (const f of l.fotos) fotos.push(await otimizar(f));
+  locacoesPublicadas.push({ ...l, capa: await otimizar(l.capa), fotos });
+}
+fs.writeFileSync(path.join(DIST, "data/locacoes.js"), paraJS("LOCACOES", locacoesPublicadas));
+if (sharp) console.log(`✔ ${otimizadas} foto(s) otimizada(s)`);
+
 /* Cabeçalhos de segurança (Cloudflare Pages) */
 fs.writeFileSync(path.join(DIST, "_headers"), [
   "/*",

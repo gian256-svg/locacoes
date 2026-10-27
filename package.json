@@ -2,7 +2,11 @@
   "name": "locacoes",
   "private": true,
   "description": "Galeria de locações para fotografia — preto e dourado",
+  "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
   }
 }
