@@ -27,7 +27,14 @@ media_libraries:
     config:
       max_file_size: 20971520 # 20 MB (limite da hospedagem gratuita é 25 MB por arquivo)
       slugify_filename: true
-      # As fotos são otimizadas automaticamente na publicação (scripts/build.mjs)
+      # Fotos são reduzidas no próprio navegador antes de enviar (salvar fica rápido,
+      # mesmo no celular). Na publicação são otimizadas de novo (scripts/build.mjs).
+      transformations:
+        raster_image:
+          format: webp
+          quality: 80
+          width: 1800
+          height: 1800
 
 slug:
   encoding: ascii
@@ -87,11 +94,13 @@ collections:
         label_singular: informação
         widget: list
         required: false
-        summary: "{{fields.rotulo}}: {{fields.valor}}"
+        summary: "{{fields.rotulo}} {{fields.valor}}"
+        hint: "Todos os campos são opcionais: preencha só o que quiser mostrar."
         fields:
           - name: icone
             label: Ícone
             widget: select
+            required: false
             default: check
             options:
               - { label: "Área (m²)", value: area }
@@ -104,8 +113,8 @@ collections:
               - { label: "Câmera / ideal para", value: camera }
               - { label: "Energia", value: energia }
               - { label: "Check (genérico)", value: check }
-          - { name: rotulo, label: "Título (ex: Área)", widget: string }
-          - { name: valor, label: "Valor (ex: 300 m²)", widget: string }
+          - { name: rotulo, label: "Título (ex: Área)", widget: string, required: false }
+          - { name: valor, label: "Valor (ex: 300 m²)", widget: string, required: false }
       - name: fotos
         label: Fotos da galeria
         widget: image

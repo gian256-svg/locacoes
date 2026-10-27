@@ -202,7 +202,7 @@
     var qtd = Number(L.quantidadeInfosNoCard) >= 0 ? Number(L.quantidadeInfosNoCard) : 3;
     if (L.mostrarInfosNoCard !== false && infos.length && qtd > 0) {
       partes.push(el("ul", { class: "card__infos" }, infos.slice(0, qtd).map(function (i) {
-        return el("li", { title: i.rotulo || "" }, [el("span", { class: "icone", html: App.icone(i.icone) }), String(i.valor || "")]);
+        return el("li", { title: i.rotulo || "" }, [el("span", { class: "icone", html: App.icone(i.icone) }), String(i.valor || i.rotulo || "")]);
       })));
     } else if (L.mostrarInfosNoCard === false && texto("maisInfos", "+ informações")) {
       partes.push(el("span", { class: "card__mais", text: texto("maisInfos", "+ informações") }));
