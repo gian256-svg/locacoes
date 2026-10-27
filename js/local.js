@@ -77,16 +77,23 @@
       ]) : null
     ]);
 
+    var lateral = criarCta("cta--desktop");
+
+    return el("section", { class: "local-corpo container" + (lateral ? "" : " local-corpo--sem-cta") }, [esquerda, lateral]);
+  }
+
+  /* Caixa "Gostou deste local?". No celular ela aparece mais abaixo
+     (depois dos ensaios); no computador, ao lado das informações. */
+  function criarCta(variante) {
+    if (L.mostrarCaixaContato === false) return null;
     var wa = App.linkWhatsApp(loc.nome);
-    var lateral = L.mostrarCaixaContato === false ? null : el("aside", { class: "cta revelar" }, [
+    return el("aside", { class: "cta revelar " + variante }, [
       el("p", { class: "eyebrow", text: loc.nome }),
       cab("h3", "cta__titulo", texto("ctaTitulo", "Gostou deste local?")),
       texto("ctaTexto", "") ? el("p", { class: "cta__texto", text: texto("ctaTexto", "") }) : null,
       wa ? el("a", { class: "botao botao--ouro", href: wa, target: "_blank", rel: "noopener noreferrer" }, [el("span", { html: App.icone("whatsapp") }), texto("ctaBotao", "Consultar disponibilidade") || "WhatsApp"]) : null,
       el("div", { class: "cta__links" }, App.linksContato(loc.nome))
     ]);
-
-    return el("section", { class: "local-corpo container" + (lateral ? "" : " local-corpo--sem-cta") }, [esquerda, lateral]);
   }
 
   /* ---------- Vídeo ---------- */
@@ -200,9 +207,22 @@
   var secoes = { mosaico: mosaico, informacoes: informacoes, video: video, galeria: galeria, ensaios: ensaios, outras: outras };
   var ordem = Array.isArray(L.ordemPaginaLocal) ? L.ordemPaginaLocal : ["mosaico", "informacoes", "video", "galeria", "ensaios", "outras"];
   main.append(hero());
+  var temCta = false, ctaCelularColocada = false;
+  function ctaCelular() {
+    if (!temCta || ctaCelularColocada) return;
+    ctaCelularColocada = true;
+    main.append(el("section", { class: "container cta-celular" }, criarCta("cta--celular")));
+  }
   ordem.forEach(function (nome) {
-    if (secoes[nome]) { var s = secoes[nome](); if (s) main.append(s); }
+    if (!secoes[nome]) return;
+    if (nome === "outras") ctaCelular(); // no celular: depois dos ensaios, antes de "Outras locações"
+    var s = secoes[nome]();
+    if (s) {
+      if (nome === "informacoes" && s.querySelector(".cta")) temCta = true;
+      main.append(s);
+    }
   });
+  ctaCelular(); // se "Outras locações" estiver desligada, fica no final
   App.observarRevelar(main);
 
   /* ---------- Visualizador de fotos (lightbox) ---------- */
