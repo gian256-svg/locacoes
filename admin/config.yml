@@ -121,6 +121,12 @@ collections:
         multiple: true
         required: false
         hint: "Selecione várias fotos de uma vez. Arraste para mudar a ordem."
+      - name: ensaios
+        label: "📸 Ensaios feitos aqui"
+        widget: image
+        multiple: true
+        required: false
+        hint: "Fotos dos ensaios que você já fez nesta locação. A seção aparece no final da página assim que tiver pelo menos 1 foto. Depois clique em Salvar."
       - name: videos
         label: Vídeos
         label_singular: vídeo
@@ -150,12 +156,6 @@ collections:
               - { label: "Horizontal 16:9 (deitado)", value: horizontal }
               - { label: "Vertical 9:16 (em pé / Reels)", value: vertical }
             hint: "Arquivos enviados e links de YouTube Shorts são detectados sozinhos. Para outros links (YouTube, Drive, Vimeo), escolha o formato."
-      - name: ensaios
-        label: Ensaios feitos aqui
-        widget: image
-        multiple: true
-        required: false
-        hint: "Fotos de ensaios que você já fez nesta locação. Aparecem no final da página. Arraste para mudar a ordem."
 
   # ==================================================================
   # CONFIGURAÇÕES
