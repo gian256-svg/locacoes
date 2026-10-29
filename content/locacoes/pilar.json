@@ -1,13 +1,13 @@
 {
-  "nome": "Pilar",
+  "nome": "Higienópolis",
   "visivel": true,
   "ordem": 31,
   "cidade": "São Paulo",
-  "bairro": "Vila Mafra",
-  "selo": "",
-  "capa": "/assets/uploads/1001023248.webp",
+  "bairro": "Higienópolis",
+  "selo": "Nova",
+  "capa": "/assets/uploads/1001026811.webp",
   "resumo": "",
-  "descricao": "Casa com diversos cenários e uma vibe rústica e mistériosa, pois mistura luz natural e sombras que criam esse clima. \n\nNão disponibiliza estacionamento.\n📍 Metro mais próximo: São Paulo - Morumbi",
+  "descricao": "Novo Studio em Higienópolis, com uma proposta mais clean e minimalista. Contém fundo infinito na cor branca.\n\nDisponibiliza estacionamento.\n📍 Há 10min do metro Higienópolis - mackenzie",
   "infos": [
     {
       "icone": "relogio",
@@ -23,37 +23,22 @@
       "icone": "check",
       "rotulo": "",
       "valor": "Ventilador"
+    },
+    {
+      "icone": "check",
+      "rotulo": "",
+      "valor": "Estacionamento"
     }
   ],
   "fotos": [
-    "/assets/uploads/1001025161.webp",
-    "/assets/uploads/1001025153.webp",
-    "/assets/uploads/1001025196.webp",
-    "/assets/uploads/1001025193.webp",
-    "/assets/uploads/1001025175.webp",
-    "/assets/uploads/1001025187.webp",
-    "/assets/uploads/1001025172.webp",
-    "/assets/uploads/1001025184.webp",
-    "/assets/uploads/1001025202.webp",
-    "/assets/uploads/1001025169.webp",
-    "/assets/uploads/1001025228.webp",
-    "/assets/uploads/1001025225.webp",
-    "/assets/uploads/1001025219.webp",
-    "/assets/uploads/1001025181.webp",
-    "/assets/uploads/1001025190.webp"
-  ],
-  "ensaios": [
-    "/assets/uploads/1001023060.webp",
-    "/assets/uploads/1001023054.webp",
-    "/assets/uploads/1001023035.webp",
-    "/assets/uploads/1001023038.webp",
-    "/assets/uploads/1001023052.webp",
-    "/assets/uploads/1001023036.webp",
-    "/assets/uploads/1001023039.webp",
-    "/assets/uploads/1001023059.webp",
-    "/assets/uploads/1001023080.webp",
-    "/assets/uploads/1001023086.webp",
-    "/assets/uploads/1001023058.webp"
+    "/assets/uploads/1001026816.webp",
+    "/assets/uploads/1001026823.webp",
+    "/assets/uploads/1001026809.webp",
+    "/assets/uploads/1001026807.webp",
+    "/assets/uploads/1001026821.webp",
+    "/assets/uploads/1001026834.webp",
+    "/assets/uploads/1001026811.webp",
+    "/assets/uploads/1001024582.webp"
   ],
   "videos": [
     {
