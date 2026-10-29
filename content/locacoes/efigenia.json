@@ -1,7 +1,7 @@
 {
   "nome": "Morumbi",
   "visivel": true,
-  "ordem": 30,
+  "ordem": 5,
   "cidade": "São Paulo",
   "bairro": "Jardim guedala",
   "selo": "",
@@ -41,15 +41,6 @@
     "/assets/uploads/1001023010.webp",
     "/assets/uploads/1001022852.webp"
   ],
-  "videos": [
-    {
-      "link": "",
-      "arquivo": "/assets/uploads/1001022856.mp4",
-      "titulo": "",
-      "formato": "auto",
-      "vertical": false
-    }
-  ],
   "ensaios": [
     "/assets/uploads/1001023217.webp",
     "/assets/uploads/1001023116.webp",
@@ -61,5 +52,14 @@
     "/assets/uploads/1001023047.webp",
     "/assets/uploads/1001023048.webp",
     "/assets/uploads/1001023033.webp"
+  ],
+  "videos": [
+    {
+      "link": "",
+      "arquivo": "/assets/uploads/1001022856.mp4",
+      "titulo": "",
+      "formato": "auto",
+      "vertical": false
+    }
   ]
 }
