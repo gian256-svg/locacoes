@@ -6,8 +6,8 @@
   "bairro": "Centro",
   "selo": "Destaque",
   "capa": "/assets/uploads/1001020877.webp",
-  "resumo": "O espaço conta com amplas janelas e muita iluminação natural. Clean e industrial.",
-  "descricao": "A sala é ideal para diferentes propostas de ensaio: desde fotos mais intimistas, com cama, sofá e plantas, até produções profissionais que pedem um cenários com mesa, ou fundo infinito na cor verde ou branca com acréscimo.\nExiste a possibilidade de usar a banheira com água, consulte o acréscimo.\n\nNão disponibiliza estacionamento.\n📍 2 min do metro São Bento.",
+  "resumo": "",
+  "descricao": "A sala combina com muitas propostas de ensaios, e conta com janelas de ponta a ponta, deixando o ambiente muito bem iluminado independente do clima. \n\nConta com fundo infinito na cor marrom e branco com acréscimo.\n\nNão disponibiliza estacionamento.\n📍 2 min do metro São Bento.",
   "infos": [
     {
       "icone": "relogio",
@@ -27,15 +27,31 @@
     {
       "icone": "check",
       "rotulo": "Fundo infinito",
-      "valor": "Laranja ou branco (acréscimo)"
+      "valor": "Marrom ou branco"
     }
   ],
   "fotos": [
-    "/assets/uploads/1001020873.webp",
-    "/assets/uploads/1001020875.webp",
-    "/assets/uploads/1001020869.webp",
+    "/assets/uploads/1001024871.webp",
+    "/assets/uploads/1001024873.webp",
     "/assets/uploads/1001020863.webp",
-    "/assets/uploads/1001020861.webp"
+    "/assets/uploads/1001020867.webp",
+    "/assets/uploads/1001020877.webp",
+    "/assets/uploads/1001020869.webp",
+    "/assets/uploads/1001024866.webp",
+    "/assets/uploads/1001024859.webp",
+    "/assets/uploads/1001024887.webp",
+    "/assets/uploads/1001024863.webp",
+    "/assets/uploads/1001024865.webp",
+    "/assets/uploads/1001020871.webp",
+    "/assets/uploads/1001020879.webp"
+  ],
+  "ensaios": [
+    "/assets/uploads/1001022728.webp",
+    "/assets/uploads/1001022733.webp",
+    "/assets/uploads/1001022749.webp",
+    "/assets/uploads/1001022734.webp",
+    "/assets/uploads/1001022726.webp",
+    "/assets/uploads/1001022750.webp"
   ],
   "videos": [
     {
@@ -45,13 +61,5 @@
       "formato": "auto",
       "vertical": false
     }
-  ],
-  "ensaios": [
-    "/assets/uploads/1001022728.webp",
-    "/assets/uploads/1001022733.webp",
-    "/assets/uploads/1001022749.webp",
-    "/assets/uploads/1001022734.webp",
-    "/assets/uploads/1001022726.webp",
-    "/assets/uploads/1001022750.webp"
   ]
 }
