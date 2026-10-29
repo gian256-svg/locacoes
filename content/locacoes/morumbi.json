@@ -7,7 +7,7 @@
   "selo": "",
   "capa": "/assets/uploads/1001023248.webp",
   "resumo": "",
-  "descricao": "Casa de 3 andares, com diversos cenários e uma vibe rústica e mistériosa, pois mistura luz natural e sombras que criam esse clima. Além de área aberta pra piscina e corredor com matinhos.\n\nNão disponibiliza estacionamento.\n📍 Metro mais próximo: São Paulo - Morumbi",
+  "descricao": "Casa com diversos cenários e uma vibe rústica e mistériosa, pois mistura luz natural e sombras que criam esse clima. \n\nNão disponibiliza estacionamento.\n📍 Metro mais próximo: São Paulo - Morumbi",
   "infos": [
     {
       "icone": "relogio",
@@ -26,16 +26,21 @@
     }
   ],
   "fotos": [
-    "/assets/uploads/1001022852.webp"
-  ],
-  "videos": [
-    {
-      "link": "",
-      "arquivo": "/assets/uploads/1001022856.mp4",
-      "titulo": "",
-      "formato": "auto",
-      "vertical": false
-    }
+    "/assets/uploads/1001025161.webp",
+    "/assets/uploads/1001025153.webp",
+    "/assets/uploads/1001025196.webp",
+    "/assets/uploads/1001025193.webp",
+    "/assets/uploads/1001025175.webp",
+    "/assets/uploads/1001025187.webp",
+    "/assets/uploads/1001025172.webp",
+    "/assets/uploads/1001025184.webp",
+    "/assets/uploads/1001025202.webp",
+    "/assets/uploads/1001025169.webp",
+    "/assets/uploads/1001025228.webp",
+    "/assets/uploads/1001025225.webp",
+    "/assets/uploads/1001025219.webp",
+    "/assets/uploads/1001025181.webp",
+    "/assets/uploads/1001025190.webp"
   ],
   "ensaios": [
     "/assets/uploads/1001023060.webp",
@@ -49,5 +54,14 @@
     "/assets/uploads/1001023080.webp",
     "/assets/uploads/1001023086.webp",
     "/assets/uploads/1001023058.webp"
+  ],
+  "videos": [
+    {
+      "link": "",
+      "arquivo": "/assets/uploads/1001026610.mp4",
+      "titulo": "",
+      "formato": "auto",
+      "vertical": false
+    }
   ]
 }
