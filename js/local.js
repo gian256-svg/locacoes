@@ -92,7 +92,8 @@
       cab("h3", "cta__titulo", texto("ctaTitulo", "Gostou deste local?")),
       texto("ctaTexto", "") ? el("p", { class: "cta__texto", text: texto("ctaTexto", "") }) : null,
       wa ? el("a", { class: "botao botao--ouro", href: wa, target: "_blank", rel: "noopener noreferrer" }, [el("span", { html: App.icone("whatsapp") }), texto("ctaBotao", "Consultar disponibilidade") || "WhatsApp"]) : null,
-      el("div", { class: "cta__links" }, App.linksContato(loc.nome))
+      // Ícones de WhatsApp/Instagram já ficam fixos no topo; só repete aqui se o topo estiver sem eles
+      L.mostrarContatoNoTopo === false ? el("div", { class: "cta__links" }, App.linksContato(loc.nome)) : null
     ]);
   }
 
@@ -193,13 +194,49 @@
       .filter(function (f) { return f.src; });
     if (!lista.length) return null;
     var lb = criarLightbox(lista);
+    var trilho = el("div", { class: "masonry ensaios__trilho revelar" }, lista.map(function (f, i) {
+      return el("button", { type: "button", class: "masonry__item", "aria-label": "Abrir foto de ensaio " + (i + 1), onclick: function () { lb.abrir(i); } },
+        el("img", { src: f.src, alt: "Ensaio em " + loc.nome, loading: "lazy", decoding: "async" }));
+    }));
+
+    /* Indicador do carrossel (só aparece no celular): bolinhas ou "3 / 20" */
+    var usarBolinhas = lista.length <= 12;
+    var bolinhas = usarBolinhas ? lista.map(function (_, i) {
+      return el("button", { type: "button", class: "ensaios__ponto", "aria-label": "Ir para foto " + (i + 1), onclick: function () { irPara(i); } });
+    }) : [];
+    var contador = usarBolinhas ? null : el("span", { class: "ensaios__contador" });
+    var indicador = lista.length > 1 ? el("div", { class: "ensaios__indicador", "aria-hidden": usarBolinhas ? null : "true" }, usarBolinhas ? bolinhas : contador) : null;
+
+    function itemAtual() {
+      var itens = trilho.children, centro = trilho.scrollLeft + trilho.clientWidth / 2, melhor = 0, dist = Infinity;
+      for (var i = 0; i < itens.length; i++) {
+        var d = Math.abs(itens[i].offsetLeft + itens[i].offsetWidth / 2 - centro);
+        if (d < dist) { dist = d; melhor = i; }
+      }
+      return melhor;
+    }
+    function irPara(i) {
+      var item = trilho.children[i];
+      if (item) trilho.scrollTo({ left: item.offsetLeft - (trilho.clientWidth - item.offsetWidth) / 2, behavior: "smooth" });
+    }
+    function atualizar() {
+      var atual = itemAtual();
+      bolinhas.forEach(function (b, i) { b.classList.toggle("ativo", i === atual); });
+      if (contador) contador.textContent = (atual + 1) + " / " + lista.length;
+    }
+    var pendente = false;
+    trilho.addEventListener("scroll", function () {
+      if (pendente) return;
+      pendente = true;
+      requestAnimationFrame(function () { pendente = false; atualizar(); });
+    }, { passive: true });
+    atualizar();
+
     return el("section", { class: "container ensaios", id: "ensaios" }, [
       cab("h2", "titulo-secao titulo-secao--centro revelar", texto("tituloEnsaios", "Ensaios feitos aqui")),
       texto("subtituloEnsaios", "") ? el("p", { class: "ensaios__sub revelar", text: texto("subtituloEnsaios", "") }) : null,
-      el("div", { class: "masonry" }, lista.map(function (f, i) {
-        return el("button", { type: "button", class: "masonry__item revelar", "aria-label": "Abrir foto de ensaio " + (i + 1), onclick: function () { lb.abrir(i); } },
-          el("img", { src: f.src, alt: "Ensaio em " + loc.nome, loading: "lazy", decoding: "async" }));
-      }))
+      trilho,
+      indicador
     ]);
   }
 

@@ -409,7 +409,7 @@ h1, h2, h3, .marca__nome, .rodape__marca, .info__valor {
 }
 
 /* ---------- Responsivo ---------- */
-.cta-celular { display: none; }
+.cta-celular, .ensaios__indicador { display: none; }
 @media (max-width: 1080px) {
   .grade { grid-template-columns: repeat(min(var(--colunas), 2), minmax(0, 1fr)); }
   .local-corpo { grid-template-columns: 1fr; }
@@ -436,6 +436,21 @@ h1, h2, h3, .marca__nome, .rodape__marca, .info__valor {
   }
   .carrossel-mobile .grade::-webkit-scrollbar { display: none; }
   .carrossel-mobile .card { flex: 0 0 80%; scroll-snap-align: start; }
+
+  /* Ensaios: passador de fotos deslizante no celular */
+  .masonry.ensaios__trilho {
+    display: flex; columns: auto; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * clamp(1.25rem, 4vw, 3rem)); padding-inline: clamp(1.25rem, 4vw, 3rem);
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+  }
+  .masonry.ensaios__trilho::-webkit-scrollbar { display: none; }
+  .ensaios__trilho .masonry__item { flex: 0 0 82%; margin: 0; aspect-ratio: 4 / 5; scroll-snap-align: center; }
+  .ensaios__trilho .masonry__item:only-child { flex-basis: 100%; }
+  .ensaios__trilho .masonry__item img { height: 100%; object-fit: cover; }
+  .ensaios__indicador { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 1.1rem; min-height: 20px; }
+  .ensaios__ponto { width: 7px; height: 7px; padding: 0; border-radius: 50%; background: var(--cor-borda-forte); transition: all .3s var(--suave); }
+  .ensaios__ponto.ativo { width: 22px; border-radius: 4px; background: var(--cor-dourado); }
+  .ensaios__contador { font-size: .72rem; letter-spacing: .2em; color: var(--cor-dourado); }
 
   .card__ver { opacity: 1; transform: translate(-50%, 0); font-size: .6rem; bottom: 18px; }
   .card__cabecalho--sobre ~ .card__ver { display: none; }
