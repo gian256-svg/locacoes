@@ -1,10 +1,10 @@
 {
   "nome": "Arcos",
   "visivel": true,
-  "ordem": 2,
+  "ordem": 4,
   "cidade": "São Paulo",
   "bairro": "Brooklin",
-  "selo": "",
+  "selo": "Nova",
   "capa": "/assets/uploads/1001027317.webp",
   "resumo": "",
   "descricao": "A sala clean e minimalista, contém cama, sofá e diversas poltronas. A sala combina perfeitamente para ensaios profissionais. Possui fundo infinito, mas o valor é cobrado a parte.\n\nNão disponibiliza estacionamento.\n📍 700m da estação Cambo belo ou estação Brooklin",
