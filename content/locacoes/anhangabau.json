@@ -1,13 +1,13 @@
 {
-  "nome": "Arcos",
+  "nome": "Palha",
   "visivel": true,
   "ordem": 2,
   "cidade": "São Paulo",
   "bairro": "Brooklin",
   "selo": "",
-  "capa": "/assets/uploads/1001027317.webp",
+  "capa": "/assets/uploads/1001027374.webp",
   "resumo": "",
-  "descricao": "A sala clean e minimalista, contém cama, sofá e diversas poltronas. A sala combina perfeitamente para ensaios profissionais. Possui fundo infinito, mas o valor é cobrado a parte.\n\nNão disponibiliza estacionamento.\n📍 700m da estação Cambo belo ou estação Brooklin",
+  "descricao": "A sala clean e minimalista, boa iluminação e muitas possibilidades de criação, combinando perfeitamente para ensaios intimistas e/ouprofissionais.\n\nNão disponibiliza estacionamento.\n📍 700m da estação Cambo belo ou estação Brooklin",
   "infos": [
     {
       "icone": "relogio",
@@ -23,23 +23,22 @@
       "icone": "check",
       "rotulo": "",
       "valor": "Climatizado"
-    },
-    {
-      "icone": "check",
-      "rotulo": "Fundo infinito",
-      "valor": "(cobrado a parte)"
     }
   ],
   "fotos": [
-    "/assets/uploads/1001027317.webp",
-    "/assets/uploads/1001027315.webp",
-    "/assets/uploads/1001027323.webp",
-    "/assets/uploads/1001027321.webp",
-    "/assets/uploads/1001027319.webp",
-    "/assets/uploads/1001027325.webp",
-    "/assets/uploads/1001027327.webp",
-    "/assets/uploads/1001027344.webp"
+    "/assets/uploads/1001027380.webp",
+    "/assets/uploads/1001027382.webp",
+    "/assets/uploads/1001027388.webp",
+    "/assets/uploads/1001027384.webp",
+    "/assets/uploads/1001027386.webp",
+    "/assets/uploads/1001027376.webp",
+    "/assets/uploads/1001027374.webp",
+    "/assets/uploads/1001027372.webp",
+    "/assets/uploads/1001027370.webp",
+    "/assets/uploads/1001027368.webp",
+    "/assets/uploads/1001027366.webp"
   ],
+  "ensaios": [],
   "videos": [
     {
       "link": "",
