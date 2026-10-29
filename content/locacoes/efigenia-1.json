@@ -1,0 +1,65 @@
+{
+  "nome": "Efigênia",
+  "visivel": true,
+  "ordem": 2,
+  "cidade": "São Paulo",
+  "bairro": "Centro",
+  "selo": "",
+  "capa": "/assets/uploads/1001020877.webp",
+  "resumo": "",
+  "descricao": "A sala combina com muitas propostas de ensaios, e conta com janelas de ponta a ponta, deixando o ambiente muito bem iluminado independente do clima. \n\nConta com fundo infinito na cor marrom e branco com acréscimo.\n\nNão disponibiliza estacionamento.\n📍 2 min do metro São Bento.",
+  "infos": [
+    {
+      "icone": "relogio",
+      "rotulo": "manhã e tarde",
+      "valor": "Todos os dias"
+    },
+    {
+      "icone": "luz",
+      "rotulo": "Janela de ponta a ponta",
+      "valor": "Iluminação natural"
+    },
+    {
+      "icone": "check",
+      "rotulo": "",
+      "valor": "Ventiladores"
+    },
+    {
+      "icone": "check",
+      "rotulo": "Fundo infinito",
+      "valor": "Marrom ou branco"
+    }
+  ],
+  "fotos": [
+    "/assets/uploads/1001024871.webp",
+    "/assets/uploads/1001024873.webp",
+    "/assets/uploads/1001020863.webp",
+    "/assets/uploads/1001020867.webp",
+    "/assets/uploads/1001020877.webp",
+    "/assets/uploads/1001020869.webp",
+    "/assets/uploads/1001024866.webp",
+    "/assets/uploads/1001024859.webp",
+    "/assets/uploads/1001024887.webp",
+    "/assets/uploads/1001024863.webp",
+    "/assets/uploads/1001024865.webp",
+    "/assets/uploads/1001020871.webp",
+    "/assets/uploads/1001020879.webp"
+  ],
+  "ensaios": [
+    "/assets/uploads/1001022728.webp",
+    "/assets/uploads/1001022733.webp",
+    "/assets/uploads/1001022749.webp",
+    "/assets/uploads/1001022734.webp",
+    "/assets/uploads/1001022726.webp",
+    "/assets/uploads/1001022750.webp"
+  ],
+  "videos": [
+    {
+      "link": "",
+      "arquivo": "/assets/uploads/1001026983.mp4",
+      "titulo": "",
+      "formato": "auto",
+      "vertical": false
+    }
+  ]
+}
